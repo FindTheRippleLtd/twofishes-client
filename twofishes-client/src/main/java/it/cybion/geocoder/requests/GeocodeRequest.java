@@ -1,6 +1,5 @@
 package it.cybion.geocoder.requests;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +20,7 @@ public class GeocodeRequest {
     private GeocodePoint ll;
 
     // debug information, currently 0 or 1
-    private Integer debug = 0;
+    private Integer debug;
 
     // Is this an autocomplete request? i.e. should we treat this as prefix matching
     private boolean autocomplete;
@@ -58,9 +57,26 @@ public class GeocodeRequest {
 
     public GeocodeRequest() {
 
-        this(null, null, "en", null, 0, false, new ArrayList<YahooWoeType>(),
-                new ArrayList<YahooWoeType>(), null, null, 0, 0, new ArrayList<String>(),
-                new ArrayList<ResponseIncludes>(), false, AutocompleteBias.BALANCED);
+        this(null);
+
+    }
+
+    public GeocodeRequest(String query) {
+
+        this(query, null, "en");
+
+    }
+
+    public GeocodeRequest(String query, String lang) {
+
+        this(query, null, lang);
+
+    }
+
+    public GeocodeRequest(String query, String cc, String lang) {
+
+        this(query, cc, lang, null, 0, false, null, null, null, null, 0, 0, null, null, false,
+                AutocompleteBias.BALANCED);
 
     }
 
@@ -74,6 +90,7 @@ public class GeocodeRequest {
         this.cc = cc;
         this.lang = lang;
         this.ll = ll;
+        this.debug = debug;
         this.autocomplete = autocomplete;
         this.woeHint = woeHint;
         this.woeRestrict = woeRestrict;
