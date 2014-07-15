@@ -14,4 +14,6 @@ Download and install Twofishes geocoder, following instructions at:
 
 ### Use the APIs
 
-```it.cybion.geocoder.GeocoderImpl```
+```
+it.cybion.geocoder.GeocoderImpl
+```
