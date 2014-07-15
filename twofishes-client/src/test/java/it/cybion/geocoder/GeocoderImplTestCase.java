@@ -1,10 +1,8 @@
-package it.cybion.geocoder.requests;
+package it.cybion.geocoder;
 
-import it.cybion.geocoder.GeocoderImpl;
+import it.cybion.geocoder.requests.GeocodeRequest;
 import it.cybion.geocoder.responses.GeocodeResponse;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,8 +14,6 @@ import static org.testng.Assert.assertNotNull;
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
 public class GeocoderImplTestCase {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(GeocoderImplTestCase.class);
 
     private GeocoderImpl geocoderImpl;
 
@@ -45,19 +41,18 @@ public class GeocoderImplTestCase {
         final GeocodeRequest aRequestEnglishLang = new GeocodeRequest("nyc", "en");
         final GeocodeResponse response1 = this.geocoderImpl.geocode(aRequestEnglishLang);
         assertNotNull(response1);
-
         assertEquals(response, response1);
-
     }
 
     @Test
-    public void testBuilder() throws Exception {
+    public void givenAStreetShouldNot() throws Exception {
 
         final GeocodeRequest aRequestDefaultLang = new GeocodeRequest.GeocodeRequestBuilder().query(
                 "via trionfale").countryCode("IT").lang("en").build();
 
         final GeocodeResponse response = this.geocoderImpl.geocode(aRequestDefaultLang);
         assertNotNull(response);
+        assertEquals(response.getInterpretations().size(), 0);
 
     }
 }

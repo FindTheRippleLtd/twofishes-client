@@ -107,8 +107,6 @@ public class GeocodeRequest {
         this.autocompleteBias = autocompleteBias;
     }
 
-    //TODO add builder
-
     public static class GeocodeRequestBuilder {
 
         private String query;
