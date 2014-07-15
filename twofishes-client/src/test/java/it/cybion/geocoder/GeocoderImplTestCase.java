@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
@@ -71,6 +72,13 @@ public class GeocoderImplTestCase {
         final GeocodeResponse response = this.geocoderImpl.geocode(aRequestDefaultLang);
         assertNotNull(response);
         assertEquals(response.getInterpretations().size(), 0);
+
+    }
+
+    @Test
+    public void givenUseCaseShouldWork() throws Exception {
+
+        assertTrue(true);
 
     }
 }
