@@ -43,10 +43,21 @@ public class GeocoderImplTestCase {
         assertNotNull(response);
 
         final GeocodeRequest aRequestEnglishLang = new GeocodeRequest("nyc", "en");
-        final GeocodeResponse response1 = this.geocoderImpl.geocode(aRequestDefaultLang);
+        final GeocodeResponse response1 = this.geocoderImpl.geocode(aRequestEnglishLang);
         assertNotNull(response1);
 
         assertEquals(response, response1);
+
+    }
+
+    @Test
+    public void testBuilder() throws Exception {
+
+        final GeocodeRequest aRequestDefaultLang = new GeocodeRequest.GeocodeRequestBuilder().query(
+                "via trionfale").countryCode("IT").lang("en").build();
+
+        final GeocodeResponse response = this.geocoderImpl.geocode(aRequestDefaultLang);
+        assertNotNull(response);
 
     }
 }

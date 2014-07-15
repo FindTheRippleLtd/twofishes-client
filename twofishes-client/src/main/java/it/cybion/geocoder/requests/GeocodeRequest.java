@@ -15,8 +15,8 @@ public class GeocodeRequest {
     // country code hint -- results will be biased towards this country
     private String cc;
 
-    // langugage hint, used to format displayName in response
-    private String lang = "en";
+    // language hint, used to format displayName in response
+    private String lang;
 
     // lat/lng hint -- results will be biased towards this location
     // in revgeo mode, this is the point that is searched for
@@ -26,7 +26,7 @@ public class GeocodeRequest {
     private Integer debug;
 
     // Is this an autocomplete request? i.e. should we treat this as prefix matching
-    private boolean autocomplete;
+    private Boolean autocomplete;
 
     // bias the results towards these woe types
     private List<YahooWoeType> woeHint;
@@ -53,7 +53,7 @@ public class GeocodeRequest {
     private List<ResponseIncludes> responseIncludes;
 
     // in geocoding mode, requires all results to fall within the bounds/radius specified
-    private boolean strict = false;
+    private Boolean strict;
 
     // in autocomplete mode, specifies how strongly locally relevant results are preferred
     private AutocompleteBias autocompleteBias;
@@ -78,15 +78,15 @@ public class GeocodeRequest {
 
     public GeocodeRequest(String query, String cc, String lang) {
 
-        this(query, cc, lang, null, 0, false, null, null, null, null, 0, 0, null, null, false,
+        this(query, cc, lang, null, 0, null, null, null, null, null, null, 10, null, null, null,
                 AutocompleteBias.BALANCED);
 
     }
 
     public GeocodeRequest(String query, String cc, String lang, GeocodePoint ll, Integer debug,
-            boolean autocomplete, List<YahooWoeType> woeHint, List<YahooWoeType> woeRestrict,
+            Boolean autocomplete, List<YahooWoeType> woeHint, List<YahooWoeType> woeRestrict,
             GeocodeBoundingBox bounds, String slug, Integer radius, Integer maxInterpretations,
-            List<String> allowedSources, List<ResponseIncludes> responseIncludes, boolean strict,
+            List<String> allowedSources, List<ResponseIncludes> responseIncludes, Boolean strict,
             AutocompleteBias autocompleteBias) {
 
         this.query = query;
@@ -109,6 +109,153 @@ public class GeocodeRequest {
 
     //TODO add builder
 
+    public static class GeocodeRequestBuilder {
+
+        private String query;
+
+        private String cc;
+
+        private String lang;
+
+        private AutocompleteBias autocompleteBias;
+
+        private Integer maxInterpretations;
+
+        public GeocodeRequestBuilder() {
+
+            this.query = "";
+            this.cc = "";
+            this.lang = "en";
+            this.autocompleteBias = AutocompleteBias.BALANCED;
+            this.maxInterpretations = 10;
+        }
+
+        public GeocodeRequestBuilder query(final String query) {
+
+            this.query = query;
+            return this;
+        }
+
+        public GeocodeRequestBuilder countryCode(final String cc) {
+
+            this.cc = cc;
+            return this;
+        }
+
+        public GeocodeRequestBuilder lang(String lang) {
+
+            this.lang = lang;
+            return this;
+        }
+
+        public GeocodeRequestBuilder autocompleteBias(AutocompleteBias autocompleteBias) {
+
+            this.autocompleteBias = autocompleteBias;
+            return this;
+
+        }
+
+        public GeocodeRequestBuilder maxInterpretations(Integer maxInterpretations) {
+
+            this.maxInterpretations = maxInterpretations;
+            return this;
+        }
+
+        public GeocodeRequest build() {
+
+            validate();
+
+            return new GeocodeRequest(this.query, this.cc, this.lang, null, 0, null, null, null,
+                    null, null, null, this.maxInterpretations, null, null, null,
+                    this.autocompleteBias);
+        }
+
+        private void validate() {
+            //TODO
+
+        }
+    }
+
+    public String getQuery() {
+
+        return query;
+    }
+
+    public String getCc() {
+
+        return cc;
+    }
+
+    public String getLang() {
+
+        return lang;
+    }
+
+    public GeocodePoint getLl() {
+
+        return ll;
+    }
+
+    public Integer getDebug() {
+
+        return debug;
+    }
+
+    public Boolean isAutocomplete() {
+
+        return autocomplete;
+    }
+
+    public List<YahooWoeType> getWoeHint() {
+
+        return woeHint;
+    }
+
+    public List<YahooWoeType> getWoeRestrict() {
+
+        return woeRestrict;
+    }
+
+    public GeocodeBoundingBox getBounds() {
+
+        return bounds;
+    }
+
+    public String getSlug() {
+
+        return slug;
+    }
+
+    public Integer getRadius() {
+
+        return radius;
+    }
+
+    public Integer getMaxInterpretations() {
+
+        return maxInterpretations;
+    }
+
+    public List<String> getAllowedSources() {
+
+        return allowedSources;
+    }
+
+    public List<ResponseIncludes> getResponseIncludes() {
+
+        return responseIncludes;
+    }
+
+    public Boolean isStrict() {
+
+        return strict;
+    }
+
+    public AutocompleteBias getAutocompleteBias() {
+
+        return autocompleteBias;
+    }
+
     @Override
     public boolean equals(Object o) {
 
@@ -121,14 +268,12 @@ public class GeocodeRequest {
 
         GeocodeRequest that = (GeocodeRequest) o;
 
-        if (autocomplete != that.autocomplete) {
-            return false;
-        }
-        if (strict != that.strict) {
-            return false;
-        }
         if (allowedSources != null ? !allowedSources.equals(that.allowedSources) :
                 that.allowedSources != null) {
+            return false;
+        }
+        if (autocomplete != null ? !autocomplete.equals(that.autocomplete) :
+                that.autocomplete != null) {
             return false;
         }
         if (autocompleteBias != that.autocompleteBias) {
@@ -166,6 +311,9 @@ public class GeocodeRequest {
         if (slug != null ? !slug.equals(that.slug) : that.slug != null) {
             return false;
         }
+        if (strict != null ? !strict.equals(that.strict) : that.strict != null) {
+            return false;
+        }
         if (woeHint != null ? !woeHint.equals(that.woeHint) : that.woeHint != null) {
             return false;
         }
@@ -185,7 +333,7 @@ public class GeocodeRequest {
         result = 31 * result + (lang != null ? lang.hashCode() : 0);
         result = 31 * result + (ll != null ? ll.hashCode() : 0);
         result = 31 * result + (debug != null ? debug.hashCode() : 0);
-        result = 31 * result + (autocomplete ? 1 : 0);
+        result = 31 * result + (autocomplete != null ? autocomplete.hashCode() : 0);
         result = 31 * result + (woeHint != null ? woeHint.hashCode() : 0);
         result = 31 * result + (woeRestrict != null ? woeRestrict.hashCode() : 0);
         result = 31 * result + (bounds != null ? bounds.hashCode() : 0);
@@ -194,7 +342,7 @@ public class GeocodeRequest {
         result = 31 * result + (maxInterpretations != null ? maxInterpretations.hashCode() : 0);
         result = 31 * result + (allowedSources != null ? allowedSources.hashCode() : 0);
         result = 31 * result + (responseIncludes != null ? responseIncludes.hashCode() : 0);
-        result = 31 * result + (strict ? 1 : 0);
+        result = 31 * result + (strict != null ? strict.hashCode() : 0);
         result = 31 * result + (autocompleteBias != null ? autocompleteBias.hashCode() : 0);
         return result;
     }

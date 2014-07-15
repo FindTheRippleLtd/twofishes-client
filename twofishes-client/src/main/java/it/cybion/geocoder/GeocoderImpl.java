@@ -1,5 +1,6 @@
 package it.cybion.geocoder;
 
+import it.cybion.geocoder.requests.AutocompleteBias;
 import it.cybion.geocoder.requests.GeocodeRequest;
 import it.cybion.geocoder.responses.GeocodeResponse;
 import org.apache.http.HttpEntity;
@@ -44,22 +45,113 @@ public class GeocoderImpl implements Geocoder {
     @Override
     public GeocodeResponse geocode(final GeocodeRequest request) {
 
+        //TODO check null request
+
         GeocodeResponse geocodeResponse = null;
 
-        //TODO parse parameters from requests
-        final String query = "nyc";
+        //parse parameters from requests
+        //https://github.com/foursquare/twofishes/blob/master/docs/twofishes_requests.md
+        final String query = request.getQuery();
+        final String cc = request.getCc();
+        final String lang = request.getLang();
+        final GeocodePoint ll = request.getLl();
+        String commaSeparatedLatLng = null;
+        if (ll != null) {
+            commaSeparatedLatLng = ll.getLat() + "," + ll.getLng();
+        }
+        final String debug = request.getDebug() + "";
+        final Boolean autocomplete = request.isAutocomplete();
+        String autocompleteAsString = null;
+        if (autocomplete != null) {
+            autocompleteAsString = Boolean.toString(autocomplete);
+        }
+        final String woeHint = EnumUtils.asCsv(request.getWoeHint());
+        final String woeRestrict = EnumUtils.asCsv(request.getWoeRestrict());
+        //TODO bounds
+        request.getBounds();
+        final String slug = request.getSlug();
+        final Integer radius = request.getRadius();
+        String radiusAsString = null;
+        if (radius != null) {
+            radiusAsString = radius.toString();
+        }
+        final String maxInterpretations = request.getMaxInterpretations().toString();
+        final String allowedSources = EnumUtils.asCsvAs(request.getAllowedSources());
+        final String responseIncludes = EnumUtils.asCsvRi(request.getResponseIncludes());
+        final Boolean strict = request.isStrict();
+        String isStrict = null;
+        if (strict != null) {
+            isStrict = Boolean.toString(strict);
+        }
+        final AutocompleteBias autocompleteBias = request.getAutocompleteBias();
+        String autocompleteBiasAsString = null;
+
+        if (autocompleteBias != null) {
+            autocompleteBiasAsString = autocompleteBias.getValue() + "";
+        }
+
+        final URIBuilder http = new URIBuilder().setScheme("http").setHost(this.host).setPort(
+                this.port).setPath("/");
+
+        if (query != null) {
+            http.setParameter("query", query);
+        }
+        if (cc != null) {
+            http.setParameter("cc", cc);
+        }
+        if (lang != null) {
+            http.setParameter("lang", lang);
+        }
+        if (commaSeparatedLatLng != null) {
+            http.setParameter("ll", commaSeparatedLatLng);
+        }
+        if (debug != null && !debug.equals("0")) {
+            http.setParameter("debug", debug);
+        }
+        if (maxInterpretations != null) {
+            http.setParameter("maxInterpretations", maxInterpretations);
+        }
+        if (woeHint != null) {
+            http.setParameter("woeHint", woeHint);
+        }
+        if (woeRestrict != null) {
+            http.setParameter("woeRestrict", woeRestrict);
+        }
+        if (responseIncludes != null) {
+            http.setParameter("responseIncludes", responseIncludes);
+        }
+        if (radiusAsString != null) {
+            http.setParameter("radius", radiusAsString);
+        }
+
+        if (autocompleteAsString != null) {
+            http.setParameter("autocomplete", autocompleteAsString);
+        }
+
+        if (autocompleteBiasAsString != null) {
+            http.setParameter("autocompleteBias", autocompleteBiasAsString);
+        }
+
+        if (isStrict != null) {
+            http.setParameter("strict", isStrict);
+        }
+
+        if (slug != null) {
+            http.setParameter("slug", slug);
+        }
+        if (allowedSources != null) {
+            http.setParameter("allowedSources", allowedSources);
+        }
 
         URI requestUri = null;
+
         try {
-            requestUri = new URIBuilder().setScheme("http")
-                    .setHost(this.host)
-                    .setPort(this.port)
-                    .setPath("/")
-                    .setParameter("query", query)
-                    .build();
+            requestUri = http.build();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+
+        LOGGER.info(requestUri.toString());
 
         final HttpGet httpGet = new HttpGet(requestUri);
 
@@ -103,7 +195,7 @@ public class GeocoderImpl implements Geocoder {
         GeocodeResponse geocodeResponse = null;
 
         try {
-            return this.objectMapper.readValue(responseAsJson, GeocodeResponse.class);
+            geocodeResponse = this.objectMapper.readValue(responseAsJson, GeocodeResponse.class);
         } catch (IOException e) {
             e.printStackTrace();
         }

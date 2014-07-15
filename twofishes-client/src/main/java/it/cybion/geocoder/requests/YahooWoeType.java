@@ -63,4 +63,5 @@ public enum YahooWoeType {
 
         return value;
     }
+
 }
