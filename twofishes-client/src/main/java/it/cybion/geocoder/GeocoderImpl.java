@@ -34,7 +34,7 @@ public class GeocoderImpl implements Geocoder {
 
     private final CloseableHttpClient httpclient;
 
-    public GeocoderImpl(final String host, int port, final ObjectMapper objectMapper,
+    public GeocoderImpl(final String host, final int port, final ObjectMapper objectMapper,
             final CloseableHttpClient aDefault) {
 
         this.host = host;
