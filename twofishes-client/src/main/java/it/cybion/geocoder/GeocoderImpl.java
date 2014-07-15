@@ -96,55 +96,24 @@ public class GeocoderImpl implements Geocoder {
         final URIBuilder http = new URIBuilder().setScheme("http").setHost(this.host).setPort(
                 this.port).setPath("/");
 
-        if (query != null) {
-            http.setParameter("query", query);
-        }
-        if (cc != null) {
-            http.setParameter("cc", cc);
-        }
-        if (lang != null) {
-            http.setParameter("lang", lang);
-        }
-        if (commaSeparatedLatLng != null) {
-            http.setParameter("ll", commaSeparatedLatLng);
-        }
+        setParamIfNotNull(http, "query", query);
+        setParamIfNotNull(http, "cc", cc);
+        setParamIfNotNull(http, "lang", lang);
+        setParamIfNotNull(http, "ll", commaSeparatedLatLng);
+
         if (debug != null && !debug.equals("0")) {
             http.setParameter("debug", debug);
         }
-        if (maxInterpretations != null) {
-            http.setParameter("maxInterpretations", maxInterpretations);
-        }
-        if (woeHint != null) {
-            http.setParameter("woeHint", woeHint);
-        }
-        if (woeRestrict != null) {
-            http.setParameter("woeRestrict", woeRestrict);
-        }
-        if (responseIncludes != null) {
-            http.setParameter("responseIncludes", responseIncludes);
-        }
-        if (radiusAsString != null) {
-            http.setParameter("radius", radiusAsString);
-        }
-
-        if (autocompleteAsString != null) {
-            http.setParameter("autocomplete", autocompleteAsString);
-        }
-
-        if (autocompleteBiasAsString != null) {
-            http.setParameter("autocompleteBias", autocompleteBiasAsString);
-        }
-
-        if (isStrict != null) {
-            http.setParameter("strict", isStrict);
-        }
-
-        if (slug != null) {
-            http.setParameter("slug", slug);
-        }
-        if (allowedSources != null) {
-            http.setParameter("allowedSources", allowedSources);
-        }
+        setParamIfNotNull(http, "maxInterpretations", maxInterpretations);
+        setParamIfNotNull(http, "woeHint", woeHint);
+        setParamIfNotNull(http, "woeRestrict", woeRestrict);
+        setParamIfNotNull(http, "responseIncludes", responseIncludes);
+        setParamIfNotNull(http, "radius", radiusAsString);
+        setParamIfNotNull(http, "autocomplete", autocompleteAsString);
+        setParamIfNotNull(http, "autocompleteBias", autocompleteBiasAsString);
+        setParamIfNotNull(http, "strict", isStrict);
+        setParamIfNotNull(http, "slug", slug);
+        setParamIfNotNull(http, "allowedSources", allowedSources);
 
         URI requestUri = null;
 
@@ -198,6 +167,14 @@ public class GeocoderImpl implements Geocoder {
         }
 
         return geocodeResponse;
+    }
+
+    private static void setParamIfNotNull(URIBuilder http, String parameter, String value) {
+
+        if (value != null) {
+            http.setParameter(parameter, value);
+        }
+
     }
 
     private GeocodeResponse deserialize(final String responseAsJson) throws IOException {
