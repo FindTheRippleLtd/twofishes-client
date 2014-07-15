@@ -12,6 +12,8 @@ public class Geometry {
 
     private GeocodeBoundingBox bounds;
 
+    //TODO wkbGeometry is missing and simplified
+
     private Geometry() {
 
     }

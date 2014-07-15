@@ -1,5 +1,7 @@
 package it.cybion.geocoder.responses;
 
+import it.cybion.geocoder.requests.YahooWoeType;
+
 import java.util.List;
 
 /**
@@ -15,7 +17,7 @@ public class Feature {
 
     private String displayName;
 
-    private int woeType;
+    private YahooWoeType woeType;
 
     private List<Id> ids;
 
@@ -59,7 +61,7 @@ public class Feature {
         return displayName;
     }
 
-    public int getWoeType() {
+    public YahooWoeType getWoeType() {
 
         return woeType;
     }
@@ -121,9 +123,6 @@ public class Feature {
 
         Feature feature = (Feature) o;
 
-        if (woeType != feature.woeType) {
-            return false;
-        }
         if (attributes != null ? !attributes.equals(feature.attributes) :
                 feature.attributes != null) {
             return false;
@@ -167,6 +166,9 @@ public class Feature {
         if (parentIds != null ? !parentIds.equals(feature.parentIds) : feature.parentIds != null) {
             return false;
         }
+        if (woeType != feature.woeType) {
+            return false;
+        }
 
         return true;
     }
@@ -178,7 +180,7 @@ public class Feature {
         result = 31 * result + (geometry != null ? geometry.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (displayName != null ? displayName.hashCode() : 0);
-        result = 31 * result + woeType;
+        result = 31 * result + (woeType != null ? woeType.hashCode() : 0);
         result = 31 * result + (ids != null ? ids.hashCode() : 0);
         result = 31 * result + (names != null ? names.hashCode() : 0);
         result = 31 * result + (highlightedName != null ? highlightedName.hashCode() : 0);

@@ -11,7 +11,7 @@ public class Name {
 
     private String lang;
 
-    private List<Integer> flags;
+    private List<Flag> flags;
 
     private Name() {
 
@@ -27,7 +27,7 @@ public class Name {
         return lang;
     }
 
-    public List<Integer> getFlags() {
+    public List<Flag> getFlags() {
 
         return flags;
     }

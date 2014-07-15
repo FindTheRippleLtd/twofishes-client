@@ -1,8 +1,13 @@
 package it.cybion.geocoder;
 
 import it.cybion.geocoder.requests.GeocodeRequest;
+import it.cybion.geocoder.responses.Flag;
 import it.cybion.geocoder.responses.GeocodeResponse;
+import it.cybion.geocoder.serialization.FlagDeserializer;
+import it.cybion.geocoder.serialization.FlagSerializer;
+import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.module.SimpleModule;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -20,7 +25,14 @@ public class GeocoderImplTestCase {
     @BeforeMethod
     public void setUp() throws Exception {
 
-        this.geocoderImpl = new GeocoderImpl("localhost", 5101, new ObjectMapper());
+        final ObjectMapper objectMapper = new ObjectMapper();
+
+        final SimpleModule flagDeserializationModule = new SimpleModule("FlagModule", new Version(1,
+                0, 0, null)).addDeserializer(Flag.class, new FlagDeserializer()).addSerializer(
+                Flag.class, new FlagSerializer());
+
+        objectMapper.registerModule(flagDeserializationModule);
+        this.geocoderImpl = new GeocoderImpl("localhost", 5101, objectMapper);
 
     }
 

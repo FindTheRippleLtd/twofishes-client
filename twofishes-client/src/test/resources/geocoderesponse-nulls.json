@@ -1,0 +1,83 @@
+{
+    "interpretations": [
+        {
+            "what": "",
+            "where": "nyc",
+            "feature": {
+                "cc": "US",
+                "geometry": {
+                    "center": {
+                        "lat": 40.742185,
+                        "lng": -73.992602
+                    }
+                },
+                "name": "New York",
+                "displayName": "New York, NY, United States",
+                "woeType": 7,
+                "ids": [
+                    {
+                        "source": "geonameid",
+                        "id": "5128581"
+                    }
+                ],
+                "names": [
+                    {
+                        "name": "Big Apple",
+                        "lang": "en"
+                    },
+                    {
+                        "name": "NYC",
+                        "lang": "en",
+                        "flags": [
+                            128,
+                            16,
+                            32
+                        ]
+                    },
+                    {
+                        "name": "New York",
+                        "lang": "en",
+                        "flags": [
+                            128,
+                            16,
+                            1,
+                            32
+                        ]
+                    },
+                    {
+                        "name": "New York City",
+                        "lang": "en",
+                        "flags": [
+                            16
+                        ]
+                    },
+                    {
+                        "name": "The City of New York",
+                        "lang": "en",
+                        "flags": [
+                            16
+                        ]
+                    }
+                ],
+                "highlightedName": "<b>NYC</b>, NY, United States",
+                "matchedName": "NYC, NY, United States",
+                "id": "geonameid:5128581",
+                "attributes": {
+                    "adm0cap": 0,
+                    "scalerank": 0,
+                    "labelrank": 1,
+                    "natscale": 600,
+                    "population": 8175133
+                },
+                "longId": "72057594043056517",
+                "longIds": [
+                    "72057594043056530"
+                ],
+                "parentIds": [
+                    "72057594044179937",
+                    "72057594043056574"
+                ]
+            }
+        }
+    ]
+}
