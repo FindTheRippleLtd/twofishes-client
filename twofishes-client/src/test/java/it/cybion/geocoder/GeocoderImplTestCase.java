@@ -5,6 +5,8 @@ import it.cybion.geocoder.responses.Flag;
 import it.cybion.geocoder.responses.GeocodeResponse;
 import it.cybion.geocoder.serialization.FlagDeserializer;
 import it.cybion.geocoder.serialization.FlagSerializer;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.module.SimpleModule;
@@ -22,6 +24,8 @@ public class GeocoderImplTestCase {
 
     private GeocoderImpl geocoderImpl;
 
+    private CloseableHttpClient closeable;
+
     @BeforeMethod
     public void setUp() throws Exception {
 
@@ -32,13 +36,15 @@ public class GeocoderImplTestCase {
                 Flag.class, new FlagSerializer());
 
         objectMapper.registerModule(flagDeserializationModule);
-        this.geocoderImpl = new GeocoderImpl("localhost", 5101, objectMapper);
+        this.closeable = HttpClients.createDefault();
+        this.geocoderImpl = new GeocoderImpl("localhost", 5101, objectMapper, closeable);
 
     }
 
     @AfterMethod
     public void tearDown() throws Exception {
 
+        this.closeable.close();
         this.geocoderImpl = null;
 
     }

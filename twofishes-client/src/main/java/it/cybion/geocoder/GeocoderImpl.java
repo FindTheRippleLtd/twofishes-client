@@ -9,7 +9,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
@@ -35,12 +34,13 @@ public class GeocoderImpl implements Geocoder {
 
     private final CloseableHttpClient httpclient;
 
-    public GeocoderImpl(final String host, int port, ObjectMapper objectMapper) {
+    public GeocoderImpl(final String host, int port, final ObjectMapper objectMapper,
+            final CloseableHttpClient aDefault) {
 
         this.host = host;
         this.port = port;
         this.objectMapper = objectMapper;
-        this.httpclient = HttpClients.createDefault();
+        this.httpclient = aDefault;
 
     }
 
