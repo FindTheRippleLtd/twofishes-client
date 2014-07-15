@@ -154,7 +154,7 @@ public class GeocoderImpl implements Geocoder {
             throw new RuntimeException("can't build uri", e);
         }
 
-        LOGGER.info(requestUri.toString());
+        LOGGER.debug(requestUri.toString());
 
         final HttpGet httpGet = new HttpGet(requestUri);
 
@@ -177,11 +177,13 @@ public class GeocoderImpl implements Geocoder {
                 responseAsJson = EntityUtils.toString(entity1);
                 EntityUtils.consume(entity1);
             } catch (IOException e) {
+                //TODO
                 e.printStackTrace();
             } finally {
                 try {
                     response1.close();
                 } catch (IOException e) {
+                    //TODO
                     e.printStackTrace();
                 }
             }
@@ -190,6 +192,7 @@ public class GeocoderImpl implements Geocoder {
             try {
                 geocodeResponse = deserialize(responseAsJson);
             } catch (IOException e) {
+                //TODO
                 e.printStackTrace();
             }
         }
