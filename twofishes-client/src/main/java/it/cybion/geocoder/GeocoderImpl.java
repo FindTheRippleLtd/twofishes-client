@@ -3,7 +3,6 @@ package it.cybion.geocoder;
 import it.cybion.geocoder.requests.AutocompleteBias;
 import it.cybion.geocoder.requests.GeocodeRequest;
 import it.cybion.geocoder.responses.GeocodeResponse;
-import it.cybion.geocoder.utils.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.StatusLine;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -19,6 +18,8 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+
+import static it.cybion.geocoder.utils.StringUtils.asCsv;
 
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
@@ -54,38 +55,34 @@ public class GeocoderImpl implements Geocoder {
 
         //parse parameters from requests
         //https://github.com/foursquare/twofishes/blob/master/docs/twofishes_requests.md
-        final String query = request.getQuery();
-        final String cc = request.getCc();
-        final String lang = request.getLang();
+
         final GeocodePoint ll = request.getLl();
         String commaSeparatedLatLng = null;
         if (ll != null) {
             commaSeparatedLatLng = ll.getLat() + "," + ll.getLng();
         }
+
         final String debug = request.getDebug() + "";
         final Boolean autocomplete = request.isAutocomplete();
         String autocompleteAsString = null;
         if (autocomplete != null) {
             autocompleteAsString = Boolean.toString(autocomplete);
         }
-        final String woeHint = StringUtils.asCsv(request.getWoeHint());
-        final String woeRestrict = StringUtils.asCsv(request.getWoeRestrict());
-        //TODO bounds are not considered
+        //TODO bounds are not considered yet
         request.getBounds();
-        final String slug = request.getSlug();
+
         final Integer radius = request.getRadius();
         String radiusAsString = null;
         if (radius != null) {
             radiusAsString = radius.toString();
         }
-        final String maxInterpretations = request.getMaxInterpretations().toString();
-        final String allowedSources = StringUtils.asCsv(request.getAllowedSources());
-        final String responseIncludes = StringUtils.asCsv(request.getResponseIncludes());
+
         final Boolean strict = request.isStrict();
         String isStrict = null;
         if (strict != null) {
             isStrict = Boolean.toString(strict);
         }
+
         final AutocompleteBias autocompleteBias = request.getAutocompleteBias();
         String autocompleteBiasAsString = null;
 
@@ -96,24 +93,25 @@ public class GeocoderImpl implements Geocoder {
         final URIBuilder http = new URIBuilder().setScheme("http").setHost(this.host).setPort(
                 this.port).setPath("/");
 
-        setParamIfNotNull(http, "query", query);
-        setParamIfNotNull(http, "cc", cc);
-        setParamIfNotNull(http, "lang", lang);
-        setParamIfNotNull(http, "ll", commaSeparatedLatLng);
+        setParamIfNotNullValue(http, "query", request.getQuery());
+        setParamIfNotNullValue(http, "cc", request.getCc());
+        setParamIfNotNullValue(http, "lang", request.getLang());
+        setParamIfNotNullValue(http, "ll", commaSeparatedLatLng);
 
         if (debug != null && !debug.equals("0")) {
             http.setParameter("debug", debug);
         }
-        setParamIfNotNull(http, "maxInterpretations", maxInterpretations);
-        setParamIfNotNull(http, "woeHint", woeHint);
-        setParamIfNotNull(http, "woeRestrict", woeRestrict);
-        setParamIfNotNull(http, "responseIncludes", responseIncludes);
-        setParamIfNotNull(http, "radius", radiusAsString);
-        setParamIfNotNull(http, "autocomplete", autocompleteAsString);
-        setParamIfNotNull(http, "autocompleteBias", autocompleteBiasAsString);
-        setParamIfNotNull(http, "strict", isStrict);
-        setParamIfNotNull(http, "slug", slug);
-        setParamIfNotNull(http, "allowedSources", allowedSources);
+        setParamIfNotNullValue(http, "maxInterpretations",
+                request.getMaxInterpretations().toString());
+        setParamIfNotNullValue(http, "woeHint", asCsv(request.getWoeHint()));
+        setParamIfNotNullValue(http, "woeRestrict", asCsv(request.getWoeRestrict()));
+        setParamIfNotNullValue(http, "responseIncludes", asCsv(request.getResponseIncludes()));
+        setParamIfNotNullValue(http, "radius", radiusAsString);
+        setParamIfNotNullValue(http, "autocomplete", autocompleteAsString);
+        setParamIfNotNullValue(http, "autocompleteBias", autocompleteBiasAsString);
+        setParamIfNotNullValue(http, "strict", isStrict);
+        setParamIfNotNullValue(http, "slug", request.getSlug());
+        setParamIfNotNullValue(http, "allowedSources", asCsv(request.getAllowedSources()));
 
         URI requestUri = null;
 
@@ -169,7 +167,8 @@ public class GeocoderImpl implements Geocoder {
         return geocodeResponse;
     }
 
-    private static void setParamIfNotNull(URIBuilder http, String parameter, String value) {
+    private static void setParamIfNotNullValue(final URIBuilder http, final String parameter,
+            final String value) {
 
         if (value != null) {
             http.setParameter(parameter, value);
