@@ -1,5 +1,8 @@
 package it.cybion.geocoder.requests;
 
+import it.cybion.geocoder.GeocodeBoundingBox;
+import it.cybion.geocoder.GeocodePoint;
+
 import java.util.List;
 
 /**

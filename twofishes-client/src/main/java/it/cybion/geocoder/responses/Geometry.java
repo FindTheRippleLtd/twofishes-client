@@ -1,24 +1,27 @@
 package it.cybion.geocoder.responses;
 
+import it.cybion.geocoder.GeocodeBoundingBox;
+import it.cybion.geocoder.GeocodePoint;
+
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
 public class Geometry {
 
-    private LatLng center;
+    private GeocodePoint center;
 
-    private Bounds bounds;
+    private GeocodeBoundingBox bounds;
 
     private Geometry() {
 
     }
 
-    public LatLng getCenter() {
+    public GeocodePoint getCenter() {
 
         return center;
     }
 
-    public Bounds getBounds() {
+    public GeocodeBoundingBox getBounds() {
 
         return bounds;
     }

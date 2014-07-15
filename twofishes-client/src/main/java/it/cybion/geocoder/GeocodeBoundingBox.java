@@ -1,24 +1,30 @@
-package it.cybion.geocoder.responses;
+package it.cybion.geocoder;
 
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class Bounds {
+public class GeocodeBoundingBox {
 
-    private LatLng ne;
+    private GeocodePoint ne;
 
-    private LatLng sw;
+    private GeocodePoint sw;
 
-    private Bounds() {
+    private GeocodeBoundingBox() {
 
     }
 
-    public LatLng getNe() {
+    public GeocodeBoundingBox(GeocodePoint ne, GeocodePoint sw) {
+
+        this.ne = ne;
+        this.sw = sw;
+    }
+
+    public GeocodePoint getNe() {
 
         return ne;
     }
 
-    public LatLng getSw() {
+    public GeocodePoint getSw() {
 
         return sw;
     }
@@ -33,12 +39,12 @@ public class Bounds {
             return false;
         }
 
-        Bounds bounds = (Bounds) o;
+        GeocodeBoundingBox that = (GeocodeBoundingBox) o;
 
-        if (ne != null ? !ne.equals(bounds.ne) : bounds.ne != null) {
+        if (ne != null ? !ne.equals(that.ne) : that.ne != null) {
             return false;
         }
-        if (sw != null ? !sw.equals(bounds.sw) : bounds.sw != null) {
+        if (sw != null ? !sw.equals(that.sw) : that.sw != null) {
             return false;
         }
 
