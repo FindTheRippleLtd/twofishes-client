@@ -37,10 +37,11 @@ public class ProvinceCalculator {
 
             final Feature feature = interpretation.getFeature();
 
-//            if ((feature.getWoeType() != null) && (feature.getWoeType() == YahooWoeType.ADMIN2)) {
-//                name = feature.getName();
-//                center = feature.getGeometry().getCenter();
-//            }
+            if ((feature != null) && (feature.getWoeType() != null) &&
+                (feature.getWoeType() == YahooWoeType.ADMIN2)) {
+                name = feature.getName();
+                center = feature.getGeometry().getCenter();
+            }
 
             if (name == null || center == null) {
                 final List<GeocodeFeature> parents = interpretation.getParents();
@@ -75,9 +76,10 @@ public class ProvinceCalculator {
 
             final Feature feature = interpretation.getFeature();
 
-//            if ((feature.getWoeType() != null) && (feature.getWoeType() == YahooWoeType.COUNTRY)) {
-//                name = feature.getName();
-//            }
+            if ((feature != null) && (feature.getWoeType() != null) &&
+                (feature.getWoeType() == YahooWoeType.COUNTRY)) {
+                name = feature.getName();
+            }
 
             if (name == null) {
 

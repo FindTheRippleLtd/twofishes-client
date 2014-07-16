@@ -22,7 +22,12 @@ public class ProvinceCalculatorTestCase {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProvinceCalculatorTestCase.class);
 
     @Test
-    public void shouldCalculateProvinceNameAndLocation() throws Exception {
+    public void givenFeatureShouldWork() throws Exception {
+        //TODO add test with feature
+    }
+
+    @Test
+    public void givenParentsShouldCalculateProvinceNameAndLocation() throws Exception {
 
         //fixtures
         final GeocodePoint aCenter = new GeocodePoint(1.0D, 1.0D);
