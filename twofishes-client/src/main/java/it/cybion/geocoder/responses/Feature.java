@@ -41,6 +41,28 @@ public class Feature {
 
     }
 
+    public Feature(String cc, FeatureGeometry geometry, String name, String displayName,
+            YahooWoeType woeType, List<FeatureId> ids, List<FeatureName> names,
+            String highlightedName, String matchedName, String id,
+            GeocodeFeatureAttributes attributes, Long longId, List<Long> longIds,
+            List<Long> parentIds) {
+
+        this.cc = cc;
+        this.geometry = geometry;
+        this.name = name;
+        this.displayName = displayName;
+        this.woeType = woeType;
+        this.ids = ids;
+        this.names = names;
+        this.highlightedName = highlightedName;
+        this.matchedName = matchedName;
+        this.id = id;
+        this.attributes = attributes;
+        this.longId = longId;
+        this.longIds = longIds;
+        this.parentIds = parentIds;
+    }
+
     public String getCc() {
 
         return cc;

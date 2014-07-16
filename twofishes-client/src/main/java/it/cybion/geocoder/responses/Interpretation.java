@@ -25,6 +25,19 @@ public class Interpretation {
 
     }
 
+    public Interpretation(String what, String where, Feature feature, List<GeocodeFeature> parents,
+            InterpretationScoringFeatures scores, InterpretationDebugInfo debugInfo,
+            List<Long> parentLongIds) {
+
+        this.what = what;
+        this.where = where;
+        this.feature = feature;
+        this.parents = parents;
+        this.scores = scores;
+        this.debugInfo = debugInfo;
+        this.parentLongIds = parentLongIds;
+    }
+
     public String getWhat() {
 
         return what;

@@ -50,6 +50,32 @@ public class GeocodeFeature {
         this.woeType = YahooWoeType.UNKNOWN;
     }
 
+    public GeocodeFeature(String cc, FeatureGeometry geometry, String name, String displayName,
+            YahooWoeType woeType, List<FeatureId> ids, List<FeatureName> names,
+            List<String> attribution, List<String> timezones, String highlightedName,
+            String matchedName, String slug, String id, GeocodeFeatureAttributes attributes,
+            Long longId, List<Long> longIds, List<Long> parentIds, YahooWoeType role) {
+
+        this.cc = cc;
+        this.geometry = geometry;
+        this.name = name;
+        this.displayName = displayName;
+        this.woeType = woeType;
+        this.ids = ids;
+        this.names = names;
+        this.attribution = attribution;
+        this.timezones = timezones;
+        this.highlightedName = highlightedName;
+        this.matchedName = matchedName;
+        this.slug = slug;
+        this.id = id;
+        this.attributes = attributes;
+        this.longId = longId;
+        this.longIds = longIds;
+        this.parentIds = parentIds;
+        this.role = role;
+    }
+
     public String getCc() {
 
         return cc;

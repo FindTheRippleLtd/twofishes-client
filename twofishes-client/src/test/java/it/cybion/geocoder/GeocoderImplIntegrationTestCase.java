@@ -3,9 +3,8 @@ package it.cybion.geocoder;
 import it.cybion.geocoder.requests.GeocodeRequest;
 import it.cybion.geocoder.requests.ResponseIncludes;
 import it.cybion.geocoder.requests.YahooWoeType;
-import it.cybion.geocoder.responses.GeocodeFeature;
+import it.cybion.geocoder.responses.Feature;
 import it.cybion.geocoder.responses.GeocodeResponse;
-import it.cybion.geocoder.responses.Interpretation;
 import it.cybion.geocoder.serialization.ObjectMapperFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -15,11 +14,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
 
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
@@ -76,16 +72,7 @@ public class GeocoderImplIntegrationTestCase {
     }
 
     @Test
-    public void givenUseCaseShouldWork() throws Exception {
-
-        assertTrue(true);
-
-        //should substitute Location location and LatLon latitude
-
-    }
-
-    @Test
-    public void shouldReturnLocationWithCountryAndProvince() throws Exception {
+    public void givenRomeShouldReturnProvinceWithCountryAndLatLon() throws Exception {
 
         final GeocodeRequest locationRequest = new GeocodeRequest.GeocodeRequestBuilder().query(
                 "Rome, Italy").addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
@@ -93,44 +80,31 @@ public class GeocoderImplIntegrationTestCase {
 
         final GeocodeResponse response = this.geocoderImpl.geocode(locationRequest);
 
-        String provinceName = null;
-        GeocodePoint provinceLatLon = null;
-        String countryName = null;
+        assertEquals(response.getInterpretations().size(), 2);
+        final Feature romeFeature = response.getInterpretations().get(0).getFeature();
 
-        for (final Interpretation interpretation : response.getInterpretations()) {
+        assertEquals(romeFeature.getName(), "Rome");
+        assertEquals(romeFeature.getGeometry().getCenter(), new GeocodePoint(41.96667D, 12.66667D));
+        assertEquals(response.getInterpretations().get(0).getParents().get(1).getName(), "Italy");
 
-            final YahooWoeType woeType = interpretation.getFeature().getWoeType();
+    }
 
-            if (woeType == YahooWoeType.ADMIN2) {
+    @Test
+    public void givenNettunoShouldReturnProvinceWithCountryAndLatLon() throws Exception {
 
-                if (provinceName == null) {
-                    provinceName = interpretation.getFeature().getName();
-                }
+        final GeocodeRequest locationRequest = new GeocodeRequest.GeocodeRequestBuilder().query(
+                "Nettuno").addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
+                ResponseIncludes.PARENTS).build();
 
-                final String id = interpretation.getFeature().getId();
-                assertEquals(id, "geonameid:3169069");
+        final GeocodeResponse response = this.geocoderImpl.geocode(locationRequest);
 
-                //print lat/lon
-                if (provinceLatLon == null) {
-                    provinceLatLon = interpretation.getFeature().getGeometry().getCenter();
-                }
+        assertEquals(response.getInterpretations().size(), 1);
+        final Feature nettunoFeature = response.getInterpretations().get(0).getFeature();
 
-                final List<GeocodeFeature> parents = interpretation.getParents();
-
-                for (final GeocodeFeature parent : parents) {
-                    if (parent.getWoeType() == YahooWoeType.COUNTRY) {
-
-                        if (countryName == null) {
-                            countryName = parent.getName();
-                        }
-                    }
-                }
-            }
-        }
-
-        assertEquals(provinceName, "Rome");
-        assertEquals(provinceLatLon, new GeocodePoint(41.96667D, 12.66667D));
-        assertEquals(countryName, "Italy");
+        assertEquals(nettunoFeature.getName(), "Nettuno");
+        assertEquals(nettunoFeature.getGeometry().getCenter(), new GeocodePoint(41.45907,
+                12.66037D));
+        assertEquals(response.getInterpretations().get(0).getParents().get(3).getName(), "Italy");
 
     }
 }

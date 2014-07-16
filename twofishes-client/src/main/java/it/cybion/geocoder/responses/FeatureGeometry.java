@@ -28,6 +28,12 @@ public class FeatureGeometry {
 
     }
 
+    public FeatureGeometry(GeocodePoint center, GeocodeBoundingBox bounds) {
+
+        this.center = center;
+        this.bounds = bounds;
+    }
+
     public GeocodePoint getCenter() {
 
         return center;
