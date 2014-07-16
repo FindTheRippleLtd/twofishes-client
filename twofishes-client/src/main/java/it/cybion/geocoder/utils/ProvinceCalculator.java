@@ -21,7 +21,7 @@ public class ProvinceCalculator {
 
     private List<Interpretation> interpretations;
 
-    public ProvinceCalculator(final List<Interpretation> interpretations) {
+    public ProvinceCalculator(List<Interpretation> interpretations) {
 
         this.interpretations = interpretations;
     }
