@@ -60,16 +60,18 @@ public class GeocoderImpl100TestCase extends GeocoderImplProvider {
 
     }
 
-    @Test(enabled = true)
-    public void testName() throws Exception {
+    @Test(enabled = false)
+    public void givenDatasetShouldTestPerformances() throws Exception {
 
         int missedProvinceNames = 0;
         int missedCountryNames = 0;
 
         for (final String location : this.myDict) {
+
             final GeocodeRequest geocodeRequest = new GeocodeRequest.GeocodeRequestBuilder().query(
                     location).addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
                     ResponseIncludes.PARENTS).lang("en").build();
+
             final GeocodeResponse geocode = this.geocoder.geocode(geocodeRequest);
             final List<Interpretation> interpretations = geocode.getInterpretations();
 
@@ -81,14 +83,12 @@ public class GeocoderImpl100TestCase extends GeocoderImplProvider {
 
             if (geocodedProvinceName.equals(GeocodedProvinceName.NULL)) {
                 missedProvinceNames++;
-                LOGGER.info(location + " NO geocoded province");
+                LOGGER.info(location + " can't geocode province");
             }
 
             if (s == null) {
-
                 missedCountryNames++;
-                LOGGER.info(location + " NO country");
-
+                LOGGER.info(location + " can't geocode country");
             }
 
         }

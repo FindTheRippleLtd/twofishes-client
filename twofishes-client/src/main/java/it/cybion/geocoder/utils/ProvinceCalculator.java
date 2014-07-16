@@ -2,6 +2,7 @@ package it.cybion.geocoder.utils;
 
 import it.cybion.geocoder.GeocodePoint;
 import it.cybion.geocoder.requests.YahooWoeType;
+import it.cybion.geocoder.responses.Feature;
 import it.cybion.geocoder.responses.GeocodeFeature;
 import it.cybion.geocoder.responses.Interpretation;
 import org.slf4j.Logger;
@@ -34,19 +35,29 @@ public class ProvinceCalculator {
 
         for (final Interpretation interpretation : this.interpretations) {
 
-            final List<GeocodeFeature> parents = interpretation.getParents();
+            final Feature feature = interpretation.getFeature();
 
-            if (parents != null) {
+//            if ((feature.getWoeType() != null) && (feature.getWoeType() == YahooWoeType.ADMIN2)) {
+//                name = feature.getName();
+//                center = feature.getGeometry().getCenter();
+//            }
 
-                for (final GeocodeFeature parent : parents) {
-                    if ((parent.getWoeType() != null) &&
-                        (parent.getWoeType() == YahooWoeType.ADMIN2)) {
-                        name = parent.getName();
-                        center = parent.getGeometry().getCenter();
-                        break;
+            if (name == null || center == null) {
+                final List<GeocodeFeature> parents = interpretation.getParents();
+
+                if (parents != null) {
+
+                    for (final GeocodeFeature parent : parents) {
+                        if ((parent.getWoeType() != null) &&
+                            (parent.getWoeType() == YahooWoeType.ADMIN2)) {
+                            name = parent.getName();
+                            center = parent.getGeometry().getCenter();
+                        }
                     }
                 }
+
             }
+
         }
 
         if (name != null && center != null) {
@@ -62,18 +73,28 @@ public class ProvinceCalculator {
 
         for (final Interpretation interpretation : this.interpretations) {
 
-            final List<GeocodeFeature> parents = interpretation.getParents();
+            final Feature feature = interpretation.getFeature();
 
-            if (parents != null) {
+//            if ((feature.getWoeType() != null) && (feature.getWoeType() == YahooWoeType.COUNTRY)) {
+//                name = feature.getName();
+//            }
 
-                for (final GeocodeFeature parent : parents) {
+            if (name == null) {
 
-                    if (parent.getWoeType() == YahooWoeType.COUNTRY) {
-                        name = parent.getName();
-                        break;
+                final List<GeocodeFeature> parents = interpretation.getParents();
+
+                if (parents != null) {
+
+                    for (final GeocodeFeature parent : parents) {
+
+                        if (parent.getWoeType() != null &&
+                            parent.getWoeType() == YahooWoeType.COUNTRY) {
+                            name = parent.getName();
+                        }
                     }
                 }
             }
+
         }
 
         return name;
