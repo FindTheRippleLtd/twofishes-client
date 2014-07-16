@@ -13,6 +13,12 @@ public class FeatureId {
 
     }
 
+    public FeatureId(String id, String source) {
+
+        this.id = id;
+        this.source = source;
+    }
+
     public String getSource() {
 
         return source;

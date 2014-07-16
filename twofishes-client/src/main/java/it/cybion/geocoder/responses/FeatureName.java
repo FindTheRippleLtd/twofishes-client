@@ -17,6 +17,13 @@ public class FeatureName {
 
     }
 
+    public FeatureName(String name, String lang, List<FeatureNameFlag> flags) {
+
+        this.name = name;
+        this.lang = lang;
+        this.flags = flags;
+    }
+
     public String getName() {
 
         return name;
