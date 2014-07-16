@@ -69,4 +69,55 @@ public enum YahooWoeType {
 
         return value + "";
     }
+
+    public static YahooWoeType fromTypeCode(int valueAsInt) {
+
+        switch (valueAsInt) {
+            case 0:
+                return UNKNOWN;
+            case 7:
+                return TOWN;
+            case 8:
+                return ADMIN1;
+            case 9:
+                return ADMIN2;
+            case 10:
+                return ADMIN3;
+            case 11:
+                return POSTAL_CODE;
+            case 12:
+                return COUNTRY;
+            case 13:
+                return ISLAND;
+            case 14:
+                return AIRPORT;
+            case 15:
+                return DRAINAGE;
+            case 16:
+                return PARK;
+            case 20:
+                return POI;
+            case 22:
+                return SUBURB;
+            case 23:
+                return SPORT;
+            case 24:
+                return COLLOQUIAL;
+            case 25:
+                return ZONE;
+            case 26:
+                return HISTORICAL_STATE;
+            case 27:
+                return HISTORICAL_COUNTY;
+            case 29:
+                return CONTINENT;
+            case 31:
+                return TIMEZONE;
+            case 35:
+                return HISTORICAL_TOWN;
+            case 100:
+                return STREET;
+        }
+        throw new IllegalArgumentException("Invalid YahooWoeType code: " + valueAsInt);
+    }
 }

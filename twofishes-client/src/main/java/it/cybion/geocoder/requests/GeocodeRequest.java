@@ -3,6 +3,7 @@ package it.cybion.geocoder.requests;
 import it.cybion.geocoder.GeocodeBoundingBox;
 import it.cybion.geocoder.GeocodePoint;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -119,6 +120,8 @@ public class GeocodeRequest {
 
         private Integer maxInterpretations;
 
+        private final List<YahooWoeType> woeHints;
+
         public GeocodeRequestBuilder() {
 
             this.query = "";
@@ -126,6 +129,7 @@ public class GeocodeRequest {
             this.lang = "en";
             this.autocompleteBias = AutocompleteBias.BALANCED;
             this.maxInterpretations = 10;
+            this.woeHints = new ArrayList<YahooWoeType>();
         }
 
         public GeocodeRequestBuilder query(final String query) {
@@ -159,12 +163,17 @@ public class GeocodeRequest {
             return this;
         }
 
+        public GeocodeRequestBuilder addWoeHint(YahooWoeType yahooWoeType) {
+            this.woeHints.add(yahooWoeType);
+            return this;
+        }
+
         public GeocodeRequest build() {
 
             validate();
 
-            return new GeocodeRequest(this.query, this.cc, this.lang, null, 0, null, null, null,
-                    null, null, null, this.maxInterpretations, null, null, null,
+            return new GeocodeRequest(this.query, this.cc, this.lang, null, 0, null, this.woeHints,
+                    null, null, null, null, this.maxInterpretations, null, null, null,
                     this.autocompleteBias);
         }
 

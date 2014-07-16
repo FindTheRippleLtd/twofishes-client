@@ -58,4 +58,13 @@ public class GeocodeBoundingBox {
         result = 31 * result + (sw != null ? sw.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+
+        return "GeocodeBoundingBox{" +
+               "ne=" + ne +
+               ", sw=" + sw +
+               '}';
+    }
 }

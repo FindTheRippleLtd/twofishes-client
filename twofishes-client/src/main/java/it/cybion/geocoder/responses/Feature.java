@@ -192,4 +192,25 @@ public class Feature {
         result = 31 * result + (parentIds != null ? parentIds.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+
+        return "Feature{" +
+               "cc='" + cc + '\'' +
+               ", geometry=" + geometry +
+               ", name='" + name + '\'' +
+               ", displayName='" + displayName + '\'' +
+               ", woeType=" + woeType +
+               ", ids=" + ids +
+               ", names=" + names +
+               ", highlightedName='" + highlightedName + '\'' +
+               ", matchedName='" + matchedName + '\'' +
+               ", id='" + id + '\'' +
+               ", attributes=" + attributes +
+               ", longId=" + longId +
+               ", longIds=" + longIds +
+               ", parentIds=" + parentIds +
+               '}';
+    }
 }

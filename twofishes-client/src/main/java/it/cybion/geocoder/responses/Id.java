@@ -51,4 +51,13 @@ public class Id {
         result = 31 * result + (source != null ? source.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+
+        return "Id{" +
+               "id='" + id + '\'' +
+               ", source='" + source + '\'' +
+               '}';
+    }
 }

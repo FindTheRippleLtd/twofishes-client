@@ -118,4 +118,19 @@ public class Attributes {
         result = 31 * result + (neighborhoodType != null ? neighborhoodType.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+
+        return "Attributes{" +
+               "adm0cap=" + adm0cap +
+               ", adm1cap=" + adm1cap +
+               ", scalerank=" + scalerank +
+               ", labelrank=" + labelrank +
+               ", natscale=" + natscale +
+               ", population=" + population +
+               ", sociallyRelevant=" + sociallyRelevant +
+               ", neighborhoodType=" + neighborhoodType +
+               '}';
+    }
 }

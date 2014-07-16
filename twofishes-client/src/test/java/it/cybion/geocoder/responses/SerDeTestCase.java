@@ -3,6 +3,8 @@ package it.cybion.geocoder.responses;
 import it.cybion.geocoder.requests.YahooWoeType;
 import it.cybion.geocoder.serialization.FlagDeserializer;
 import it.cybion.geocoder.serialization.FlagSerializer;
+import it.cybion.geocoder.serialization.YahooWoeTypeDeserializer;
+import it.cybion.geocoder.serialization.YahooWoeTypeSerializer;
 import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.module.SimpleModule;
@@ -26,9 +28,12 @@ public class SerDeTestCase {
     public void setUp() throws Exception {
 
         this.objectMapper = new ObjectMapper();
-        final SimpleModule flagDeserializationModule = new SimpleModule("FlagModule", new Version(1,
-                0, 0, null)).addDeserializer(Flag.class, new FlagDeserializer()).addSerializer(
-                Flag.class, new FlagSerializer());
+        final SimpleModule flagDeserializationModule = new SimpleModule("GeocoderResponseModule",
+                new Version(1, 0, 0, null))
+                .addDeserializer(Flag.class, new FlagDeserializer())
+                .addSerializer(Flag.class, new FlagSerializer())
+                .addDeserializer(YahooWoeType.class, new YahooWoeTypeDeserializer())
+                .addSerializer(YahooWoeType.class, new YahooWoeTypeSerializer());
 
         this.objectMapper.registerModule(flagDeserializationModule);
 
@@ -52,7 +57,7 @@ public class SerDeTestCase {
         assertNotNull(geocodeResponse);
         assertEquals(geocodeResponse.getInterpretations().size(), 1);
         assertEquals(geocodeResponse.getInterpretations().get(0).getFeature().getWoeType(),
-                YahooWoeType.ISLAND);
+                YahooWoeType.TOWN);
 
     }
 
@@ -82,6 +87,14 @@ public class SerDeTestCase {
 
         final Flag historicFromInt = objectMapper.readValue("1024", Flag.class);
         assertEquals(historicFromInt, Flag.HISTORIC);
+
+        final YahooWoeType admin1 = YahooWoeType.ADMIN1;
+        final String admin1AsJson = objectMapper.writeValueAsString(admin1);
+        assertEquals(admin1AsJson, "8");
+
+        final YahooWoeType deserializedAdmin1 = objectMapper.readValue(admin1AsJson,
+                YahooWoeType.class);
+        assertEquals(deserializedAdmin1, admin1);
 
     }
 }

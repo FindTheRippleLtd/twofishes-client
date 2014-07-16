@@ -57,4 +57,13 @@ public class Geometry {
         result = 31 * result + (bounds != null ? bounds.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+
+        return "Geometry{" +
+               "center=" + center +
+               ", bounds=" + bounds +
+               '}';
+    }
 }

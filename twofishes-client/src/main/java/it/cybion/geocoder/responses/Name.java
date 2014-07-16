@@ -65,4 +65,14 @@ public class Name {
         result = 31 * result + (flags != null ? flags.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+
+        return "Name{" +
+               "name='" + name + '\'' +
+               ", lang='" + lang + '\'' +
+               ", flags=" + flags +
+               '}';
+    }
 }

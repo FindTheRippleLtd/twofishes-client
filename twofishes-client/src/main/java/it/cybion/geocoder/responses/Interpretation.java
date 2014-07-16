@@ -74,4 +74,15 @@ public class Interpretation {
         result = 31 * result + (geometry != null ? geometry.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+
+        return "Interpretation{" +
+               "what='" + what + '\'' +
+               ", where='" + where + '\'' +
+               ", feature=" + feature +
+               ", geometry=" + geometry +
+               '}';
+    }
 }

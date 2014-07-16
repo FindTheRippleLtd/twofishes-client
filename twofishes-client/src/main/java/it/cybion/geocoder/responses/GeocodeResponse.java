@@ -43,4 +43,12 @@ public class GeocodeResponse {
 
         return interpretations != null ? interpretations.hashCode() : 0;
     }
+
+    @Override
+    public String toString() {
+
+        return "GeocodeResponse{" +
+               "interpretations=" + interpretations +
+               '}';
+    }
 }

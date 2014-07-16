@@ -6,8 +6,6 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 /**
- * //TODO
- *
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
 public class StringUtils {
