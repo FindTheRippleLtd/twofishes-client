@@ -103,17 +103,17 @@ public class GeocoderImplIntegrationTestCase {
 
         final GeocodeResponse response = this.geocoderImpl.geocode(locationRequest);
 
-        LOGGER.info("" + response.toString());
-
         for (final Interpretation interpretation : response.getInterpretations()) {
-
-            if (interpretation.getWhere().contains("rome")) {
-                final YahooWoeType actualRomeWoeType = interpretation.getFeature().getWoeType();
-                assertEquals(actualRomeWoeType, YahooWoeType.ADMIN2);
+            final YahooWoeType woeType = interpretation.getFeature().getWoeType();
+            LOGGER.info(woeType + "");
+            if (woeType.equals(YahooWoeType.ADMIN2)) {
+                LOGGER.info(interpretation + "");
+                //                LOGGER.info("center: " + interpretation.getGeometry().getCenter());
+                LOGGER.info("geometry center: " +
+                            interpretation.getFeature().getGeometry().getCenter());
             }
 
         }
-        LOGGER.debug("");
 
     }
 }

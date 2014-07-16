@@ -178,7 +178,7 @@ public class GeocoderImpl implements Geocoder {
 
     private GeocodeResponse deserialize(final String responseAsJson) throws IOException {
 
-        LOGGER.debug(responseAsJson);
+//        LOGGER.debug(responseAsJson);
 
         final GeocodeResponse geocodeResponse = this.objectMapper.readValue(responseAsJson,
                 GeocodeResponse.class);

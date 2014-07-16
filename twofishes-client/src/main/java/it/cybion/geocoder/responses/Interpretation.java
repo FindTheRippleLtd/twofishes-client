@@ -1,5 +1,7 @@
 package it.cybion.geocoder.responses;
 
+import java.util.List;
+
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
@@ -11,7 +13,13 @@ public class Interpretation {
 
     private Feature feature;
 
-    private Geometry geometry;
+    private List<GeocodeFeature> parents;
+
+    private InterpretationScoringFeatures scores;
+
+    private InterpretationDebugInfo debugInfo;
+
+    private List<Long> parentLongIds;
 
     private Interpretation() {
 
@@ -32,9 +40,24 @@ public class Interpretation {
         return feature;
     }
 
-    public Geometry getGeometry() {
+    public List<GeocodeFeature> getParents() {
 
-        return geometry;
+        return parents;
+    }
+
+    public InterpretationScoringFeatures getScores() {
+
+        return scores;
+    }
+
+    public InterpretationDebugInfo getDebugInfo() {
+
+        return debugInfo;
+    }
+
+    public List<Long> getParentLongIds() {
+
+        return parentLongIds;
     }
 
     @Override
@@ -49,10 +72,20 @@ public class Interpretation {
 
         Interpretation that = (Interpretation) o;
 
+        if (debugInfo != null ? !debugInfo.equals(that.debugInfo) : that.debugInfo != null) {
+            return false;
+        }
         if (feature != null ? !feature.equals(that.feature) : that.feature != null) {
             return false;
         }
-        if (geometry != null ? !geometry.equals(that.geometry) : that.geometry != null) {
+        if (parentLongIds != null ? !parentLongIds.equals(that.parentLongIds) :
+                that.parentLongIds != null) {
+            return false;
+        }
+        if (parents != null ? !parents.equals(that.parents) : that.parents != null) {
+            return false;
+        }
+        if (scores != null ? !scores.equals(that.scores) : that.scores != null) {
             return false;
         }
         if (what != null ? !what.equals(that.what) : that.what != null) {
@@ -71,7 +104,10 @@ public class Interpretation {
         int result = what != null ? what.hashCode() : 0;
         result = 31 * result + (where != null ? where.hashCode() : 0);
         result = 31 * result + (feature != null ? feature.hashCode() : 0);
-        result = 31 * result + (geometry != null ? geometry.hashCode() : 0);
+        result = 31 * result + (parents != null ? parents.hashCode() : 0);
+        result = 31 * result + (scores != null ? scores.hashCode() : 0);
+        result = 31 * result + (debugInfo != null ? debugInfo.hashCode() : 0);
+        result = 31 * result + (parentLongIds != null ? parentLongIds.hashCode() : 0);
         return result;
     }
 
@@ -82,7 +118,10 @@ public class Interpretation {
                "what='" + what + '\'' +
                ", where='" + where + '\'' +
                ", feature=" + feature +
-               ", geometry=" + geometry +
+               ", parents=" + parents +
+               ", scores=" + scores +
+               ", debugInfo=" + debugInfo +
+               ", parentLongIds=" + parentLongIds +
                '}';
     }
 }

@@ -56,8 +56,6 @@ public class SerDeTestCase {
                 GeocodeResponse.class);
         assertNotNull(geocodeResponse);
         assertEquals(geocodeResponse.getInterpretations().size(), 1);
-        assertEquals(geocodeResponse.getInterpretations().get(0).getFeature().getWoeType(),
-                YahooWoeType.TOWN);
 
     }
 
