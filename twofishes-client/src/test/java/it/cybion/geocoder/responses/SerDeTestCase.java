@@ -1,13 +1,8 @@
 package it.cybion.geocoder.responses;
 
 import it.cybion.geocoder.requests.YahooWoeType;
-import it.cybion.geocoder.serialization.FeatureNameFlagDeserializer;
-import it.cybion.geocoder.serialization.FeatureNameFlagSerializer;
-import it.cybion.geocoder.serialization.YahooWoeTypeDeserializer;
-import it.cybion.geocoder.serialization.YahooWoeTypeSerializer;
-import org.codehaus.jackson.Version;
+import it.cybion.geocoder.serialization.ObjectMapperFactory;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.module.SimpleModule;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -27,15 +22,7 @@ public class SerDeTestCase {
     @BeforeMethod
     public void setUp() throws Exception {
 
-        this.objectMapper = new ObjectMapper();
-        final SimpleModule flagDeserializationModule = new SimpleModule("GeocoderResponseModule",
-                new Version(1, 0, 0, null)).addDeserializer(FeatureNameFlag.class,
-                new FeatureNameFlagDeserializer()).addSerializer(FeatureNameFlag.class,
-                new FeatureNameFlagSerializer()).addDeserializer(YahooWoeType.class,
-                new YahooWoeTypeDeserializer()).addSerializer(YahooWoeType.class,
-                new YahooWoeTypeSerializer());
-
-        this.objectMapper.registerModule(flagDeserializationModule);
+        this.objectMapper = ObjectMapperFactory.INSTANCE.getObjectMapper();
 
     }
 

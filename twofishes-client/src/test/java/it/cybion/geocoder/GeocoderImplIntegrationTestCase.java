@@ -3,19 +3,12 @@ package it.cybion.geocoder;
 import it.cybion.geocoder.requests.GeocodeRequest;
 import it.cybion.geocoder.requests.ResponseIncludes;
 import it.cybion.geocoder.requests.YahooWoeType;
-import it.cybion.geocoder.responses.FeatureNameFlag;
 import it.cybion.geocoder.responses.GeocodeFeature;
 import it.cybion.geocoder.responses.GeocodeResponse;
 import it.cybion.geocoder.responses.Interpretation;
-import it.cybion.geocoder.serialization.FeatureNameFlagDeserializer;
-import it.cybion.geocoder.serialization.FeatureNameFlagSerializer;
-import it.cybion.geocoder.serialization.YahooWoeTypeDeserializer;
-import it.cybion.geocoder.serialization.YahooWoeTypeSerializer;
+import it.cybion.geocoder.serialization.ObjectMapperFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.codehaus.jackson.Version;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.module.SimpleModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
@@ -43,18 +36,9 @@ public class GeocoderImplIntegrationTestCase {
     @BeforeMethod
     public void setUp() throws Exception {
 
-        final ObjectMapper objectMapper = new ObjectMapper();
-
-        final SimpleModule flagDeserializationModule = new SimpleModule("GeocoderModule",
-                new Version(1, 0, 0, null)).addDeserializer(FeatureNameFlag.class,
-                new FeatureNameFlagDeserializer()).addSerializer(FeatureNameFlag.class,
-                new FeatureNameFlagSerializer()).addDeserializer(YahooWoeType.class,
-                new YahooWoeTypeDeserializer()).addSerializer(YahooWoeType.class,
-                new YahooWoeTypeSerializer());
-
-        objectMapper.registerModule(flagDeserializationModule);
         this.closeable = HttpClients.createDefault();
-        this.geocoderImpl = new GeocoderImpl("localhost", 5101, objectMapper, closeable);
+        this.geocoderImpl = new GeocoderImpl("localhost", 5101,
+                ObjectMapperFactory.INSTANCE.getObjectMapper(), closeable);
 
     }
 
@@ -117,7 +101,7 @@ public class GeocoderImplIntegrationTestCase {
 
             final YahooWoeType woeType = interpretation.getFeature().getWoeType();
 
-            if (woeType==YahooWoeType.ADMIN2) {
+            if (woeType == YahooWoeType.ADMIN2) {
 
                 if (provinceName == null) {
                     provinceName = interpretation.getFeature().getName();
