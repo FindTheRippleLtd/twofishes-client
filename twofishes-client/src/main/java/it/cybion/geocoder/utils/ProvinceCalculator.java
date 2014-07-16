@@ -64,11 +64,14 @@ public class ProvinceCalculator {
 
             final List<GeocodeFeature> parents = interpretation.getParents();
 
-            for (final GeocodeFeature parent : parents) {
+            if (parents != null) {
 
-                if (parent.getWoeType() == YahooWoeType.COUNTRY) {
-                    name = parent.getName();
-                    break;
+                for (final GeocodeFeature parent : parents) {
+
+                    if (parent.getWoeType() == YahooWoeType.COUNTRY) {
+                        name = parent.getName();
+                        break;
+                    }
                 }
             }
         }
