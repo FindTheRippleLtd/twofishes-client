@@ -1,12 +1,14 @@
 package it.cybion.geocoder;
 
 import it.cybion.geocoder.requests.GeocodeRequest;
+import it.cybion.geocoder.requests.ResponseIncludes;
 import it.cybion.geocoder.requests.YahooWoeType;
-import it.cybion.geocoder.responses.Flag;
+import it.cybion.geocoder.responses.FeatureNameFlag;
+import it.cybion.geocoder.responses.GeocodeFeature;
 import it.cybion.geocoder.responses.GeocodeResponse;
 import it.cybion.geocoder.responses.Interpretation;
-import it.cybion.geocoder.serialization.FlagDeserializer;
-import it.cybion.geocoder.serialization.FlagSerializer;
+import it.cybion.geocoder.serialization.FeatureNameFlagDeserializer;
+import it.cybion.geocoder.serialization.FeatureNameFlagSerializer;
 import it.cybion.geocoder.serialization.YahooWoeTypeDeserializer;
 import it.cybion.geocoder.serialization.YahooWoeTypeSerializer;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -19,6 +21,8 @@ import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -42,10 +46,11 @@ public class GeocoderImplIntegrationTestCase {
         final ObjectMapper objectMapper = new ObjectMapper();
 
         final SimpleModule flagDeserializationModule = new SimpleModule("GeocoderModule",
-                new Version(1, 0, 0, null)).addDeserializer(Flag.class, new FlagDeserializer())
-                .addSerializer(Flag.class, new FlagSerializer())
-                .addDeserializer(YahooWoeType.class, new YahooWoeTypeDeserializer())
-                .addSerializer(YahooWoeType.class, new YahooWoeTypeSerializer());
+                new Version(1, 0, 0, null)).addDeserializer(FeatureNameFlag.class,
+                new FeatureNameFlagDeserializer()).addSerializer(FeatureNameFlag.class,
+                new FeatureNameFlagSerializer()).addDeserializer(YahooWoeType.class,
+                new YahooWoeTypeDeserializer()).addSerializer(YahooWoeType.class,
+                new YahooWoeTypeSerializer());
 
         objectMapper.registerModule(flagDeserializationModule);
         this.closeable = HttpClients.createDefault();
@@ -99,21 +104,49 @@ public class GeocoderImplIntegrationTestCase {
     public void shouldReturnLocationWithCountryAndProvince() throws Exception {
 
         final GeocodeRequest locationRequest = new GeocodeRequest.GeocodeRequestBuilder().query(
-                "Rome, Italy").addWoeHint(YahooWoeType.ADMIN2).build();
+                "Rome, Italy").addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
+                ResponseIncludes.PARENTS).build();
 
         final GeocodeResponse response = this.geocoderImpl.geocode(locationRequest);
 
-        for (final Interpretation interpretation : response.getInterpretations()) {
-            final YahooWoeType woeType = interpretation.getFeature().getWoeType();
-            LOGGER.info(woeType + "");
-            if (woeType.equals(YahooWoeType.ADMIN2)) {
-                LOGGER.info(interpretation + "");
-                //                LOGGER.info("center: " + interpretation.getGeometry().getCenter());
-                LOGGER.info("geometry center: " +
-                            interpretation.getFeature().getGeometry().getCenter());
-            }
+        String provinceName = null;
+        GeocodePoint provinceLatLon = null;
+        String countryName = null;
 
+        for (final Interpretation interpretation : response.getInterpretations()) {
+
+            final YahooWoeType woeType = interpretation.getFeature().getWoeType();
+
+            if (woeType==YahooWoeType.ADMIN2) {
+
+                if (provinceName == null) {
+                    provinceName = interpretation.getFeature().getName();
+                }
+
+                final String id = interpretation.getFeature().getId();
+                assertEquals(id, "geonameid:3169069");
+
+                //print lat/lon
+                if (provinceLatLon == null) {
+                    provinceLatLon = interpretation.getFeature().getGeometry().getCenter();
+                }
+
+                final List<GeocodeFeature> parents = interpretation.getParents();
+
+                for (final GeocodeFeature parent : parents) {
+                    if (parent.getWoeType() == YahooWoeType.COUNTRY) {
+
+                        if (countryName == null) {
+                            countryName = parent.getName();
+                        }
+                    }
+                }
+            }
         }
+
+        assertEquals(provinceName, "Rome");
+        assertEquals(provinceLatLon, new GeocodePoint(41.96667D, 12.66667D));
+        assertEquals(countryName, "Italy");
 
     }
 }

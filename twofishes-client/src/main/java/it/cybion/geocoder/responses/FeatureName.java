@@ -5,15 +5,15 @@ import java.util.List;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class Name {
+public class FeatureName {
 
     private String name;
 
     private String lang;
 
-    private List<Flag> flags;
+    private List<FeatureNameFlag> flags;
 
-    private Name() {
+    private FeatureName() {
 
     }
 
@@ -27,7 +27,7 @@ public class Name {
         return lang;
     }
 
-    public List<Flag> getFlags() {
+    public List<FeatureNameFlag> getFlags() {
 
         return flags;
     }
@@ -42,15 +42,15 @@ public class Name {
             return false;
         }
 
-        Name name1 = (Name) o;
+        FeatureName featureName1 = (FeatureName) o;
 
-        if (flags != null ? !flags.equals(name1.flags) : name1.flags != null) {
+        if (flags != null ? !flags.equals(featureName1.flags) : featureName1.flags != null) {
             return false;
         }
-        if (lang != null ? !lang.equals(name1.lang) : name1.lang != null) {
+        if (lang != null ? !lang.equals(featureName1.lang) : featureName1.lang != null) {
             return false;
         }
-        if (name != null ? !name.equals(name1.name) : name1.name != null) {
+        if (name != null ? !name.equals(featureName1.name) : featureName1.name != null) {
             return false;
         }
 

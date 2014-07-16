@@ -122,6 +122,8 @@ public class GeocodeRequest {
 
         private final List<YahooWoeType> woeHints;
 
+        private final List<ResponseIncludes> responseIncludeses;
+
         public GeocodeRequestBuilder() {
 
             this.query = "";
@@ -130,6 +132,7 @@ public class GeocodeRequest {
             this.autocompleteBias = AutocompleteBias.BALANCED;
             this.maxInterpretations = 10;
             this.woeHints = new ArrayList<YahooWoeType>();
+            responseIncludeses = new ArrayList<ResponseIncludes>();
         }
 
         public GeocodeRequestBuilder query(final String query) {
@@ -168,13 +171,18 @@ public class GeocodeRequest {
             return this;
         }
 
+        public GeocodeRequestBuilder addResponseInclude(ResponseIncludes responseIncludes) {
+            this.responseIncludeses.add(responseIncludes);
+            return this;
+        }
+
         public GeocodeRequest build() {
 
             validate();
 
             return new GeocodeRequest(this.query, this.cc, this.lang, null, 0, null, this.woeHints,
-                    null, null, null, null, this.maxInterpretations, null, null, null,
-                    this.autocompleteBias);
+                    null, null, null, null, this.maxInterpretations, null, this.responseIncludeses,
+                    null, this.autocompleteBias);
         }
 
         private void validate() {

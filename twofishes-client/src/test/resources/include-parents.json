@@ -1,0 +1,321 @@
+{
+    "interpretations": [
+        {
+            "what": "",
+            "where": "rome italy",
+            "feature": {
+                "cc": "IT",
+                "geometry": {
+                    "center": {
+                        "lat": 41.96667,
+                        "lng": 12.66667
+                    },
+                    "bounds": {
+                        "ne": {
+                            "lat": 42.2694320679,
+                            "lng": 13.2931127548
+                        },
+                        "sw": {
+                            "lat": 41.4124259949,
+                            "lng": 11.689453125
+                        }
+                    }
+                },
+                "name": "Rome",
+                "displayName": "Rome, Latium, Italy",
+                "woeType": 9,
+                "ids": [
+                    {
+                        "source": "geonameid",
+                        "id": "3169069"
+                    }
+                ],
+                "names": [
+                    {
+                        "name": "Provincia di Roma",
+                        "lang": "en",
+                        "flags": []
+                    },
+                    {
+                        "name": "Rome",
+                        "lang": "en",
+                        "flags": [
+                            128,
+                            1
+                        ]
+                    },
+                    {
+                        "name": "Province of Rome",
+                        "lang": "en",
+                        "flags": [
+                            1
+                        ]
+                    },
+                    {
+                        "name": "RM",
+                        "lang": "abbr",
+                        "flags": [
+                            2
+                        ]
+                    }
+                ],
+                "highlightedName": "<b>Rome</b>, Latium, <b>Italy</b>",
+                "matchedName": "Rome, Latium, Italy",
+                "id": "geonameid:3169069",
+                "attributes": {
+                    "population": 3997465
+                },
+                "longId": "72057594041097005",
+                "longIds": [
+                    "72057594041097006",
+                    "72057594041097007"
+                ],
+                "parentIds": [
+                    "72057594041103331",
+                    "72057594041102912"
+                ]
+            },
+            "parents": [
+                {
+                    "cc": "IT",
+                    "geometry": {
+                        "center": {
+                            "lat": 42,
+                            "lng": 12.5
+                        },
+                        "bounds": {
+                            "ne": {
+                                "lat": 44.5089912415,
+                                "lng": 16.088104248
+                            },
+                            "sw": {
+                                "lat": 40.0018463135,
+                                "lng": 9.07573604584
+                            }
+                        }
+                    },
+                    "name": "Latium",
+                    "displayName": "Latium, Italy",
+                    "woeType": 8,
+                    "ids": [
+                        {
+                            "source": "geonameid",
+                            "id": "3174976"
+                        }
+                    ],
+                    "names": [
+                        {
+                            "name": "Latium",
+                            "lang": "en",
+                            "flags": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "Lazio",
+                            "lang": "en",
+                            "flags": []
+                        }
+                    ],
+                    "id": "geonameid:3174976",
+                    "attributes": {
+                        "population": 5681868
+                    },
+                    "longId": "72057594041102912",
+                    "parentIds": [
+                        "72057594041103331"
+                    ]
+                },
+                {
+                    "cc": "IT",
+                    "geometry": {
+                        "center": {
+                            "lat": 42.83333,
+                            "lng": 12.83333
+                        },
+                        "bounds": {
+                            "ne": {
+                                "lat": 47.6878662109,
+                                "lng": 20.7531738281
+                            },
+                            "sw": {
+                                "lat": 35.4828987122,
+                                "lng": 4.27204990387
+                            }
+                        }
+                    },
+                    "name": "Italy",
+                    "displayName": "Italy",
+                    "woeType": 12,
+                    "ids": [
+                        {
+                            "source": "geonameid",
+                            "id": "3175395"
+                        }
+                    ],
+                    "names": [
+                        {
+                            "name": "Italy",
+                            "lang": "en",
+                            "flags": [
+                                64,
+                                1
+                            ]
+                        },
+                        {
+                            "name": "IT",
+                            "lang": "abbr",
+                            "flags": [
+                                2
+                            ]
+                        },
+                        {
+                            "name": "Republic of Italy",
+                            "lang": "en",
+                            "flags": []
+                        },
+                        {
+                            "name": "Repubblica Italiana",
+                            "lang": "en",
+                            "flags": []
+                        },
+                        {
+                            "name": "Italian Republic",
+                            "lang": "en",
+                            "flags": []
+                        }
+                    ],
+                    "id": "geonameid:3175395",
+                    "attributes": {
+                        "population": 60340328
+                    },
+                    "longId": "72057594041103331",
+                    "parentIds": [
+                        "72057594044183084"
+                    ]
+                }
+            ]
+        },
+        {
+            "what": "rome",
+            "where": "italy",
+            "feature": {
+                "cc": "IT",
+                "geometry": {
+                    "center": {
+                        "lat": 42.83333,
+                        "lng": 12.83333
+                    },
+                    "bounds": {
+                        "ne": {
+                            "lat": 47.6878662109,
+                            "lng": 20.7531738281
+                        },
+                        "sw": {
+                            "lat": 35.4828987122,
+                            "lng": 4.27204990387
+                        }
+                    }
+                },
+                "name": "Italy",
+                "displayName": "Italy",
+                "woeType": 12,
+                "ids": [
+                    {
+                        "source": "geonameid",
+                        "id": "3175395"
+                    }
+                ],
+                "names": [
+                    {
+                        "name": "Italy",
+                        "lang": "en",
+                        "flags": [
+                            64,
+                            1
+                        ]
+                    },
+                    {
+                        "name": "IT",
+                        "lang": "abbr",
+                        "flags": [
+                            2
+                        ]
+                    },
+                    {
+                        "name": "Republic of Italy",
+                        "lang": "en",
+                        "flags": []
+                    },
+                    {
+                        "name": "Repubblica Italiana",
+                        "lang": "en",
+                        "flags": []
+                    },
+                    {
+                        "name": "Italian Republic",
+                        "lang": "en",
+                        "flags": []
+                    }
+                ],
+                "highlightedName": "<b>Italy</b>",
+                "matchedName": "Italy",
+                "id": "geonameid:3175395",
+                "attributes": {
+                    "population": 60340328
+                },
+                "longId": "72057594041103331",
+                "parentIds": [
+                    "72057594044183084"
+                ]
+            },
+            "parents": [
+                {
+                    "cc": "",
+                    "geometry": {
+                        "center": {
+                            "lat": 48.69096,
+                            "lng": 9.14062
+                        },
+                        "bounds": {
+                            "ne": {
+                                "lat": 80.83253479,
+                                "lng": 40.1438713074
+                            },
+                            "sw": {
+                                "lat": 27.4497890472,
+                                "lng": -31.2595367432
+                            }
+                        }
+                    },
+                    "name": "Europe",
+                    "displayName": "Europe",
+                    "woeType": 29,
+                    "ids": [
+                        {
+                            "source": "geonameid",
+                            "id": "6255148"
+                        }
+                    ],
+                    "names": [
+                        {
+                            "name": "Europe",
+                            "lang": "en",
+                            "flags": [
+                                1
+                            ]
+                        }
+                    ],
+                    "id": "geonameid:6255148",
+                    "attributes": {
+                        "population": 0
+                    },
+                    "longId": "72057594044183084",
+                    "parentIds": [
+                        "72057594044223566"
+                    ]
+                }
+            ]
+        }
+    ]
+}

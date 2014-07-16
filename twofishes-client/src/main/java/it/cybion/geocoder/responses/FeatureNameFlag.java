@@ -3,7 +3,7 @@ package it.cybion.geocoder.responses;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public enum Flag {
+public enum FeatureNameFlag {
     // A preferred name is one that is most often referred to a place
     PREFERRED(1),
     ABBREVIATION(2),
@@ -31,7 +31,7 @@ public enum Flag {
 
     private final int value;
 
-    private Flag(int value) {
+    private FeatureNameFlag(int value) {
 
         this.value = value;
 
@@ -48,7 +48,7 @@ public enum Flag {
         return value + "";
     }
 
-    public static Flag fromTypeCode(int valueAsInt) {
+    public static FeatureNameFlag fromTypeCode(int valueAsInt) {
 
         switch (valueAsInt) {
             case 1:

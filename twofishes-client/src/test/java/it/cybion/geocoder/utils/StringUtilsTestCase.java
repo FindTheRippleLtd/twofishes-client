@@ -38,4 +38,14 @@ public class StringUtilsTestCase {
 
     }
 
+    @Test
+    public void testGeonameIdToUrl() throws Exception {
+
+        final String geonameIdUrl = StringUtils.geonameIdToUrl("geonameid:3169069");
+        assertEquals(geonameIdUrl, "http://www.geonames.org/3169069");
+
+        final String anything = StringUtils.geonameIdToUrl("boh");
+        assertEquals(anything, "");
+
+    }
 }

@@ -3,12 +3,13 @@ package it.cybion.geocoder.responses;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class Id {
+public class FeatureId {
 
     private String id;
+
     private String source;
 
-    private Id() {
+    private FeatureId() {
 
     }
 
@@ -32,12 +33,12 @@ public class Id {
             return false;
         }
 
-        Id id1 = (Id) o;
+        FeatureId featureId1 = (FeatureId) o;
 
-        if (id != null ? !id.equals(id1.id) : id1.id != null) {
+        if (id != null ? !id.equals(featureId1.id) : featureId1.id != null) {
             return false;
         }
-        if (source != null ? !source.equals(id1.source) : id1.source != null) {
+        if (source != null ? !source.equals(featureId1.source) : featureId1.source != null) {
             return false;
         }
 

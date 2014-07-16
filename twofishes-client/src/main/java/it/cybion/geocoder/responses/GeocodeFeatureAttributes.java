@@ -3,7 +3,7 @@ package it.cybion.geocoder.responses;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class Attributes {
+public class GeocodeFeatureAttributes {
 
     private Integer adm0cap;
 
@@ -21,7 +21,7 @@ public class Attributes {
 
     private NeighborhoodType neighborhoodType;
 
-    private Attributes() {
+    private GeocodeFeatureAttributes() {
 
     }
 
@@ -75,7 +75,7 @@ public class Attributes {
             return false;
         }
 
-        Attributes that = (Attributes) o;
+        GeocodeFeatureAttributes that = (GeocodeFeatureAttributes) o;
 
         if (sociallyRelevant != that.sociallyRelevant) {
             return false;

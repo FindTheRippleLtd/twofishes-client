@@ -1,8 +1,8 @@
 package it.cybion.geocoder.responses;
 
 import it.cybion.geocoder.requests.YahooWoeType;
-import it.cybion.geocoder.serialization.FlagDeserializer;
-import it.cybion.geocoder.serialization.FlagSerializer;
+import it.cybion.geocoder.serialization.FeatureNameFlagDeserializer;
+import it.cybion.geocoder.serialization.FeatureNameFlagSerializer;
 import it.cybion.geocoder.serialization.YahooWoeTypeDeserializer;
 import it.cybion.geocoder.serialization.YahooWoeTypeSerializer;
 import org.codehaus.jackson.Version;
@@ -29,11 +29,11 @@ public class SerDeTestCase {
 
         this.objectMapper = new ObjectMapper();
         final SimpleModule flagDeserializationModule = new SimpleModule("GeocoderResponseModule",
-                new Version(1, 0, 0, null))
-                .addDeserializer(Flag.class, new FlagDeserializer())
-                .addSerializer(Flag.class, new FlagSerializer())
-                .addDeserializer(YahooWoeType.class, new YahooWoeTypeDeserializer())
-                .addSerializer(YahooWoeType.class, new YahooWoeTypeSerializer());
+                new Version(1, 0, 0, null)).addDeserializer(FeatureNameFlag.class,
+                new FeatureNameFlagDeserializer()).addSerializer(FeatureNameFlag.class,
+                new FeatureNameFlagSerializer()).addDeserializer(YahooWoeType.class,
+                new YahooWoeTypeDeserializer()).addSerializer(YahooWoeType.class,
+                new YahooWoeTypeSerializer());
 
         this.objectMapper.registerModule(flagDeserializationModule);
 
@@ -75,16 +75,18 @@ public class SerDeTestCase {
     @Test
     public void testEnum() throws Exception {
 
-        final Flag abbreviation = Flag.ABBREVIATION;
+        final FeatureNameFlag abbreviation = FeatureNameFlag.ABBREVIATION;
         final String asJson = objectMapper.writeValueAsString(abbreviation);
-        final Flag deserialized = objectMapper.readValue(asJson, Flag.class);
+        final FeatureNameFlag deserialized = objectMapper.readValue(asJson, FeatureNameFlag.class);
         assertEquals(deserialized, abbreviation);
 
-        final Flag abbreviationFromInt = objectMapper.readValue("2", Flag.class);
-        assertEquals(abbreviationFromInt, Flag.ABBREVIATION);
+        final FeatureNameFlag abbreviationFromInt = objectMapper.readValue("2",
+                FeatureNameFlag.class);
+        assertEquals(abbreviationFromInt, FeatureNameFlag.ABBREVIATION);
 
-        final Flag historicFromInt = objectMapper.readValue("1024", Flag.class);
-        assertEquals(historicFromInt, Flag.HISTORIC);
+        final FeatureNameFlag historicFromInt = objectMapper.readValue("1024",
+                FeatureNameFlag.class);
+        assertEquals(historicFromInt, FeatureNameFlag.HISTORIC);
 
         final YahooWoeType admin1 = YahooWoeType.ADMIN1;
         final String admin1AsJson = objectMapper.writeValueAsString(admin1);
@@ -93,6 +95,24 @@ public class SerDeTestCase {
         final YahooWoeType deserializedAdmin1 = objectMapper.readValue(admin1AsJson,
                 YahooWoeType.class);
         assertEquals(deserializedAdmin1, admin1);
+
+    }
+
+    @Test
+    public void testIncludeParents() throws Exception {
+
+        final InputStream geocodeResponseIs = this.getClass().getResourceAsStream(
+                "/include-parents.json");
+
+        final GeocodeResponse geocodeResponse = objectMapper.readValue(geocodeResponseIs,
+                GeocodeResponse.class);
+        assertNotNull(geocodeResponse);
+        assertEquals(geocodeResponse.getInterpretations().size(), 2);
+        final Interpretation interpretation = geocodeResponse.getInterpretations().get(0);
+        assertEquals(interpretation.getParents().size(), 2);
+        assertEquals(interpretation.getParents().get(0).getName(), "Latium");
+        assertEquals(interpretation.getParents().get(1).getName(), "Italy");
+
 
     }
 }

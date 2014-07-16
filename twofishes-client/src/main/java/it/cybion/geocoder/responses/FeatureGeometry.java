@@ -6,15 +6,25 @@ import it.cybion.geocoder.GeocodePoint;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class Geometry {
+public class FeatureGeometry {
 
     private GeocodePoint center;
 
     private GeocodeBoundingBox bounds;
 
-    //TODO wkbGeometry is missing and simplified
+    // TODO support "well known binary" in a json field. jackson expects base64 encoding, which is not the case
+    // only present if we have a polygon for this feature
+    //    3: private byte[] wkbGeometry;
+    //    4: optional string wktGeometry
 
-    private Geometry() {
+    //    5: optional binary wkbGeometrySimplified
+    //    6: optional string wktGeometrySimplified
+    //
+    //    7: optional GeocodeBoundingBox displayBounds
+    //
+    //    8: optional string source
+
+    private FeatureGeometry() {
 
     }
 
@@ -38,12 +48,12 @@ public class Geometry {
             return false;
         }
 
-        Geometry geometry = (Geometry) o;
+        FeatureGeometry that = (FeatureGeometry) o;
 
-        if (bounds != null ? !bounds.equals(geometry.bounds) : geometry.bounds != null) {
+        if (bounds != null ? !bounds.equals(that.bounds) : that.bounds != null) {
             return false;
         }
-        if (center != null ? !center.equals(geometry.center) : geometry.center != null) {
+        if (center != null ? !center.equals(that.center) : that.center != null) {
             return false;
         }
 
@@ -61,7 +71,7 @@ public class Geometry {
     @Override
     public String toString() {
 
-        return "Geometry{" +
+        return "FeatureGeometry{" +
                "center=" + center +
                ", bounds=" + bounds +
                '}';

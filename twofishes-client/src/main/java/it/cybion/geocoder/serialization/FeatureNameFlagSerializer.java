@@ -1,6 +1,6 @@
 package it.cybion.geocoder.serialization;
 
-import it.cybion.geocoder.responses.Flag;
+import it.cybion.geocoder.responses.FeatureNameFlag;
 import org.codehaus.jackson.JsonGenerator;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.JsonSerializer;
@@ -11,10 +11,10 @@ import java.io.IOException;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class FlagSerializer extends JsonSerializer<Flag> {
+public class FeatureNameFlagSerializer extends JsonSerializer<FeatureNameFlag> {
 
     @Override
-    public void serialize(Flag value, JsonGenerator jgen, SerializerProvider provider)
+    public void serialize(FeatureNameFlag value, JsonGenerator jgen, SerializerProvider provider)
             throws IOException, JsonProcessingException {
 
         jgen.writeNumber(value.getValue());

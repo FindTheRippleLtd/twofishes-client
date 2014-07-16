@@ -1,8 +1,5 @@
 package it.cybion.geocoder.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.List;
 
 /**
@@ -10,7 +7,7 @@ import java.util.List;
  */
 public class StringUtils {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(StringUtils.class);
+    private static final String GEONAMEID_PREFIX = "geonameid:";
 
     public static <T> String asCsv(final List<T> items) {
 
@@ -27,5 +24,15 @@ public class StringUtils {
         }
 
         return sb.toString();
+    }
+
+    public static String geonameIdToUrl(final String geonameId) {
+
+        if (!geonameId.startsWith(GEONAMEID_PREFIX)) {
+            return "";
+        }
+
+        return "http://www.geonames.org/" + geonameId.substring(GEONAMEID_PREFIX.length());
+
     }
 }

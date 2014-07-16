@@ -11,7 +11,7 @@ public class Feature {
 
     private String cc;
 
-    private Geometry geometry;
+    private FeatureGeometry geometry;
 
     private String name;
 
@@ -19,9 +19,9 @@ public class Feature {
 
     private YahooWoeType woeType;
 
-    private List<Id> ids;
+    private List<FeatureId> ids;
 
-    private List<Name> names;
+    private List<FeatureName> names;
 
     private String highlightedName;
 
@@ -29,7 +29,7 @@ public class Feature {
 
     private String id;
 
-    private Attributes attributes;
+    private GeocodeFeatureAttributes attributes;
 
     private Long longId;
 
@@ -46,7 +46,7 @@ public class Feature {
         return cc;
     }
 
-    public Geometry getGeometry() {
+    public FeatureGeometry getGeometry() {
 
         return geometry;
     }
@@ -66,12 +66,12 @@ public class Feature {
         return woeType;
     }
 
-    public List<Id> getIds() {
+    public List<FeatureId> getIds() {
 
         return ids;
     }
 
-    public List<Name> getNames() {
+    public List<FeatureName> getNames() {
 
         return names;
     }
@@ -91,7 +91,7 @@ public class Feature {
         return id;
     }
 
-    public Attributes getAttributes() {
+    public GeocodeFeatureAttributes getAttributes() {
 
         return attributes;
     }
