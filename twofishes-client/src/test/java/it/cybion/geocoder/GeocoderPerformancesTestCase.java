@@ -18,6 +18,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
@@ -97,5 +100,47 @@ public class GeocoderPerformancesTestCase extends GeocoderImplProvider {
         LOGGER.info("missed provinces " + missedProvinceNames);
         LOGGER.info("missed country names " + missedCountryNames);
 
+    }
+
+    @Test (enabled = false)
+    public void loadTest() throws Exception {
+
+        final ExecutorService executorService = Executors.newFixedThreadPool(4);
+
+        final int clientAmount = 4;
+        for (int j = 0; j < clientAmount; j++) {
+            executorService.submit(new TwoFishesClient(this.geocoder, 5));
+        }
+
+        executorService.awaitTermination(1, TimeUnit.SECONDS);
+
+    }
+
+    private static class TwoFishesClient implements Runnable {
+
+        private final Geocoder geocoder;
+
+        private int queriesPerClient;
+
+        public TwoFishesClient(final Geocoder geocoder, final int queriesPerClient) {
+
+            this.geocoder = geocoder;
+            this.queriesPerClient = queriesPerClient;
+        }
+
+        @Override
+        public void run() {
+
+            for (int i = 0; i < queriesPerClient; i++) {
+
+                final GeocodeRequest request = new GeocodeRequest.GeocodeRequestBuilder().query(
+                        "location " + i).addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
+                        ResponseIncludes.PARENTS).lang("en").build();
+                long startTime = System.nanoTime();
+                this.geocoder.geocode(request);
+                final long duration = System.nanoTime() - startTime;
+                LOGGER.info("" + duration + "nanosecs");
+            }
+        }
     }
 }
