@@ -37,8 +37,7 @@ public class ProvinceCalculator {
 
             final Feature feature = interpretation.getFeature();
 
-            if ((feature != null) && (feature.getWoeType() != null) &&
-                (feature.getWoeType() == YahooWoeType.ADMIN2)) {
+            if (notNullAndYahooWoeTypeEquals(feature, YahooWoeType.ADMIN2)) {
                 name = feature.getName();
                 center = feature.getGeometry().getCenter();
             }
@@ -56,9 +55,7 @@ public class ProvinceCalculator {
                         }
                     }
                 }
-
             }
-
         }
 
         if (name != null && center != null) {
@@ -76,8 +73,7 @@ public class ProvinceCalculator {
 
             final Feature feature = interpretation.getFeature();
 
-            if ((feature != null) && (feature.getWoeType() != null) &&
-                (feature.getWoeType() == YahooWoeType.COUNTRY)) {
+            if (notNullAndYahooWoeTypeEquals(feature, YahooWoeType.COUNTRY)) {
                 name = feature.getName();
             }
 
@@ -96,9 +92,15 @@ public class ProvinceCalculator {
                     }
                 }
             }
-
         }
 
         return name;
+    }
+
+    private static boolean notNullAndYahooWoeTypeEquals(final Feature feature,
+            final YahooWoeType desiredYahooWoeType) {
+
+        return (feature != null) && (feature.getWoeType() != null) &&
+               (feature.getWoeType() == desiredYahooWoeType);
     }
 }
