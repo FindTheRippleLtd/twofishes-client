@@ -7,7 +7,6 @@ import it.cybion.geocoder.responses.GeocodeResponse;
 import it.cybion.geocoder.responses.Interpretation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,21 +15,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
 public class GeocoderPerf extends GeocoderImplProvider {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(
-            GeocoderPerf.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeocoderPerf.class);
 
-    private List<String> myDict;
+    private List<String> someLocations;
 
     @BeforeClass
     public void setUpDataset() throws Exception {
@@ -41,34 +40,26 @@ public class GeocoderPerf extends GeocoderImplProvider {
         final InputStreamReader in = new InputStreamReader(resourceAsStream);
         final BufferedReader r = new BufferedReader(in);
 
-        myDict = new ArrayList<String>();
+        someLocations = new ArrayList<String>();
 
         String line;
 
         while ((line = r.readLine()) != null) {
-            myDict.add(line);
+            someLocations.add(line);
         }
 
         resourceAsStream.close();
-        assertEquals(myDict.size(), 100);
+        assertTrue(someLocations.size() > 0);
 
     }
 
-    @AfterClass
-    public void tearDownDataSet() throws Exception {
-
-        this.myDict.clear();
-        this.myDict = null;
-
-    }
-
-    @Test(enabled = true)
+    @Test
     public void givenDatasetShouldTestPerformances() throws Exception {
 
         int missedProvinceNames = 0;
         int missedCountryNames = 0;
 
-        for (final String location : this.myDict) {
+        for (final String location : this.someLocations) {
 
             final GeocodeRequest geocodeRequest = new GeocodeRequest.GeocodeRequestBuilder().query(
                     location).addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
@@ -76,22 +67,28 @@ public class GeocoderPerf extends GeocoderImplProvider {
 
             final GeocodeResponse geocode = this.geocoder.geocode(geocodeRequest);
             final List<Interpretation> interpretations = geocode.getInterpretations();
+            LOGGER.info("'" + location + "' '" + geocode + "'");
 
             //TODO re-add logic to count performances
         }
     }
 
-    @Test (enabled = true)
-    public void loadTest() throws Exception {
-
-        final ExecutorService executorService = Executors.newFixedThreadPool(4);
+    @Test
+    public void givenSomeClientsRunningQueriesFromTheDatasetShouldPrintExecutionTimes()
+            throws Exception {
 
         final int clientAmount = 4;
+        final int perClientQueryAmount = 1;
+
+        final ExecutorService executorService = Executors.newFixedThreadPool(clientAmount);
+
         for (int j = 0; j < clientAmount; j++) {
-            executorService.submit(new TwoFishesClient(this.geocoder, 5));
+            executorService.submit(new TwoFishesClient(this.geocoder, perClientQueryAmount,
+                    this.someLocations));
         }
 
         executorService.awaitTermination(1, TimeUnit.SECONDS);
+        executorService.shutdown();
 
     }
 
@@ -99,26 +96,41 @@ public class GeocoderPerf extends GeocoderImplProvider {
 
         private final Geocoder geocoder;
 
-        private int queriesPerClient;
+        private final int queriesAmount;
+        private List<String> someLocations;
 
-        public TwoFishesClient(final Geocoder geocoder, final int queriesPerClient) {
+        public TwoFishesClient(final Geocoder geocoder, final int queriesAmount,
+                final List<String> someLocations) {
 
             this.geocoder = geocoder;
-            this.queriesPerClient = queriesPerClient;
+            this.queriesAmount = queriesAmount;
+            this.someLocations = someLocations;
         }
 
         @Override
         public void run() {
 
-            for (int i = 0; i < queriesPerClient; i++) {
+            for (int i = 0; i < queriesAmount; i++) {
 
-                final GeocodeRequest request = new GeocodeRequest.GeocodeRequestBuilder().query(
-                        "location " + i).addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
-                        ResponseIncludes.PARENTS).lang("en").build();
+                final Random randomGenerator = new Random();
+                int randomIndex = randomGenerator.nextInt() % this.someLocations.size();
+                if (randomIndex < 0 ) {
+                    randomIndex = randomIndex * -1;
+                }
+
+                final String query = this.someLocations.get(randomIndex);
+
+                final GeocodeRequest request = new GeocodeRequest.GeocodeRequestBuilder()
+                        .query(query)
+                        .lang("en")
+                        .addWoeHint(YahooWoeType.ADMIN2)
+                        .addResponseInclude(ResponseIncludes.PARENTS)
+                        .build();
+
                 long startTime = System.nanoTime();
                 this.geocoder.geocode(request);
                 final long duration = System.nanoTime() - startTime;
-                LOGGER.info("" + duration + " nanosecs");
+                LOGGER.info("query '" + query + "' duration: '" + duration + "' nanosecs");
             }
         }
     }
