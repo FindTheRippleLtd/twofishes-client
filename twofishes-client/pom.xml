@@ -20,6 +20,43 @@
         <testng.version>6.8.8</testng.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>cybion-maven-repo-snapshots.googlecode.com</id>
+            <name>Cybion Commons SNAPSHOTS Artifacts repository</name>
+            <url>https://cybion-maven-repo.googlecode.com/svn/m2/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>cybion-maven-repo-releases.googlecode.com</id>
+            <name>Cybion Commons RELEASES Artifacts repository</name>
+            <url>https://cybion-maven-repo.googlecode.com/svn/m2/releases</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>cybion-maven-repo.googlecode.com</id>
+            <url>svn:https://cybion-maven-repo.googlecode.com/svn/m2/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>cybion-maven-repo.googlecode.com-snapshots</id>
+            <url>svn:https://cybion-maven-repo.googlecode.com/svn/m2/snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
