@@ -24,9 +24,10 @@ import static org.testng.Assert.assertEquals;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class GeocoderImpl100TestCase extends GeocoderImplProvider {
+public class GeocoderPerformancesTestCase extends GeocoderImplProvider {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(GeocoderImpl100TestCase.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(
+            GeocoderPerformancesTestCase.class);
 
     private List<String> myDict;
 
@@ -83,12 +84,12 @@ public class GeocoderImpl100TestCase extends GeocoderImplProvider {
 
             if (geocodedProvinceName.equals(GeocodedProvinceName.NULL)) {
                 missedProvinceNames++;
-                LOGGER.info(location + " can't geocode province");
+                LOGGER.info("can't geocode province from '" + location + "'");
             }
 
             if (s == null) {
                 missedCountryNames++;
-                LOGGER.info(location + " can't geocode country");
+                LOGGER.info("can't geocode country from '" + location + "'");
             }
 
         }

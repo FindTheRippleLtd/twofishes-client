@@ -1,10 +1,10 @@
 package it.cybion.geocoder;
 
+import it.cybion.geocoder.exceptions.GeocoderException;
 import it.cybion.geocoder.requests.AutocompleteBias;
 import it.cybion.geocoder.requests.GeocodeRequest;
 import it.cybion.geocoder.responses.GeocodeResponse;
 import org.apache.http.HttpEntity;
-import org.apache.http.StatusLine;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
@@ -122,50 +122,50 @@ public class GeocoderImpl implements Geocoder {
             throw new RuntimeException("can't build uri", e);
         }
 
-//        LOGGER.debug(requestUri.toString());
-
         final HttpGet httpGet = new HttpGet(requestUri);
 
-        CloseableHttpResponse response1 = null;
+        CloseableHttpResponse response = null;
 
         try {
-            response1 = httpclient.execute(httpGet);
+            response = httpclient.execute(httpGet);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new GeocoderException("failed http get", e);
         }
 
-        if (response1 != null) {
+        if (response != null) {
 
             //consume http
             String responseAsJson = null;
 
             try {
-                final StatusLine statusLine = response1.getStatusLine();
-                final HttpEntity entity1 = response1.getEntity();
-                responseAsJson = EntityUtils.toString(entity1);
-                EntityUtils.consume(entity1);
+                final HttpEntity entity = response.getEntity();
+                responseAsJson = EntityUtils.toString(entity);
+                EntityUtils.consume(entity);
             } catch (IOException e) {
-                //TODO
-                e.printStackTrace();
+                throw new GeocoderException("failed http entity consume", e);
             } finally {
-                try {
-                    response1.close();
-                } catch (IOException e) {
-                    //TODO
-                    e.printStackTrace();
-                }
+                closeQuietly(response);
             }
             //deserialize to json
 
             try {
                 geocodeResponse = deserialize(responseAsJson);
             } catch (IOException e) {
-                //TODO
-                e.printStackTrace();
+                throw new GeocoderException("failed deserialising from json", e);
             }
         }
 
         return geocodeResponse;
+    }
+
+    private static void closeQuietly(CloseableHttpResponse response1) {
+        try {
+            if (response1 != null) {
+                response1.close();
+            }
+        } catch (IOException e) {
+            LOGGER.info("failed closing http response", e);
+        }
     }
 
     private static void setParamIfNotNullValue(final URIBuilder http, final String parameter,
