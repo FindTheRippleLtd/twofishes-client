@@ -5,8 +5,6 @@ import it.cybion.geocoder.requests.ResponseIncludes;
 import it.cybion.geocoder.requests.YahooWoeType;
 import it.cybion.geocoder.responses.GeocodeResponse;
 import it.cybion.geocoder.responses.Interpretation;
-import it.cybion.geocoder.utils.GeocodedProvinceName;
-import it.cybion.geocoder.utils.ProvinceCalculator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
@@ -79,27 +77,8 @@ public class GeocoderPerf extends GeocoderImplProvider {
             final GeocodeResponse geocode = this.geocoder.geocode(geocodeRequest);
             final List<Interpretation> interpretations = geocode.getInterpretations();
 
-            final ProvinceCalculator provinceCalculator = new ProvinceCalculator(interpretations);
-
-            final GeocodedProvinceName geocodedProvinceName =
-                    provinceCalculator.calculateProvinceNameAndLatLon();
-            final String s = provinceCalculator.calculateCountryName();
-
-            if (geocodedProvinceName.equals(GeocodedProvinceName.NULL)) {
-                missedProvinceNames++;
-                LOGGER.info("can't geocode province from '" + location + "'");
-            }
-
-            if (s == null) {
-                missedCountryNames++;
-                LOGGER.info("can't geocode country from '" + location + "'");
-            }
-
+            //TODO re-add logic to count performances
         }
-
-        LOGGER.info("missed provinces " + missedProvinceNames);
-        LOGGER.info("missed country names " + missedCountryNames);
-
     }
 
     @Test (enabled = true)
