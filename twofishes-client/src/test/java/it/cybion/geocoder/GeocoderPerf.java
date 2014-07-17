@@ -27,10 +27,10 @@ import static org.testng.Assert.assertEquals;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class GeocoderPerformancesTestCase extends GeocoderImplProvider {
+public class GeocoderPerf extends GeocoderImplProvider {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(
-            GeocoderPerformancesTestCase.class);
+            GeocoderPerf.class);
 
     private List<String> myDict;
 
@@ -64,7 +64,7 @@ public class GeocoderPerformancesTestCase extends GeocoderImplProvider {
 
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void givenDatasetShouldTestPerformances() throws Exception {
 
         int missedProvinceNames = 0;
@@ -102,7 +102,7 @@ public class GeocoderPerformancesTestCase extends GeocoderImplProvider {
 
     }
 
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void loadTest() throws Exception {
 
         final ExecutorService executorService = Executors.newFixedThreadPool(4);
@@ -139,7 +139,7 @@ public class GeocoderPerformancesTestCase extends GeocoderImplProvider {
                 long startTime = System.nanoTime();
                 this.geocoder.geocode(request);
                 final long duration = System.nanoTime() - startTime;
-                LOGGER.info("" + duration + "nanosecs");
+                LOGGER.info("" + duration + " nanosecs");
             }
         }
     }

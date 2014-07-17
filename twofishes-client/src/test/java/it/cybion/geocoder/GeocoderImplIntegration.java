@@ -20,10 +20,10 @@ import static org.testng.Assert.assertNotNull;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class GeocoderImplIntegrationTestCase {
+public class GeocoderImplIntegration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(
-            GeocoderImplIntegrationTestCase.class);
+            GeocoderImplIntegration.class);
 
     private GeocoderImpl geocoderImpl;
 
