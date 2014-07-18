@@ -107,4 +107,25 @@ public class GeocoderImplIntegration {
         assertEquals(response.getInterpretations().get(0).getParents().get(3).getName(), "Italy");
 
     }
+
+    @Test
+    public void givenChicagoShouldReturnProvinceWithCountryAndLatLon() throws Exception {
+
+        final GeocodeRequest locationRequest = new GeocodeRequest.GeocodeRequestBuilder().query(
+                "Chicago/Brooklyn").addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
+                ResponseIncludes.PARENTS).build();
+
+        final GeocodeResponse response = this.geocoderImpl.geocode(locationRequest);
+
+        LOGGER.info(response + "");
+
+        assertEquals(response.getInterpretations().size(), 2);
+        final Feature chicago = response.getInterpretations().get(0).getFeature();
+
+        assertEquals(chicago.getName(), "Kings County");
+        assertEquals(chicago.getGeometry().getCenter(), new GeocodePoint(40.63439D,
+                -73.95027D));
+        assertEquals(response.getInterpretations().get(0).getParents().get(0).getName(), "New York");
+
+    }
 }
