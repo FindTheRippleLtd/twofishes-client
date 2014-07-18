@@ -122,6 +122,8 @@ public class GeocoderImpl implements Geocoder {
             throw new RuntimeException("can't build uri", e);
         }
 
+        LOGGER.debug(requestUri + "");
+
         final HttpGet httpGet = new HttpGet(requestUri);
 
         CloseableHttpResponse response = null;
