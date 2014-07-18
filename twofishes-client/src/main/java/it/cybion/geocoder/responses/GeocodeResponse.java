@@ -1,5 +1,6 @@
 package it.cybion.geocoder.responses;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,10 +8,12 @@ import java.util.List;
  */
 public class GeocodeResponse {
 
+    public static final GeocodeResponse NULL = new GeocodeResponse();
+
     private List<Interpretation> interpretations;
 
     private GeocodeResponse() {
-
+        this.interpretations = new ArrayList<Interpretation>();
     }
 
     public List<Interpretation> getInterpretations() {

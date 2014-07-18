@@ -48,11 +48,11 @@ public class GeocoderImpl implements Geocoder {
     @Override
     public GeocodeResponse geocode(final GeocodeRequest request) {
 
-        if (request == null) {
+        if (request == null) { // || request.getQuery().startsWith("http")) {
             throw new IllegalArgumentException("request can't be null");
         }
 
-        GeocodeResponse geocodeResponse = null;
+        GeocodeResponse geocodeResponse = GeocodeResponse.NULL;
 
         //parse parameters from requests
         //https://github.com/foursquare/twofishes/blob/master/docs/twofishes_requests.md
@@ -138,6 +138,11 @@ public class GeocoderImpl implements Geocoder {
 
             //consume http
             String responseAsJson = null;
+            final int statusCode = response.getStatusLine().getStatusCode();
+
+            if (statusCode != 200) {
+                throw new GeocoderException("received http status code '" + statusCode + "'");
+            }
 
             try {
                 final HttpEntity entity = response.getEntity();
@@ -153,7 +158,8 @@ public class GeocoderImpl implements Geocoder {
             try {
                 geocodeResponse = deserialize(responseAsJson);
             } catch (IOException e) {
-                throw new GeocoderException("failed deserialising from json", e);
+                throw new GeocoderException(
+                        "failed deserialising from json: '" + responseAsJson + "'", e);
             }
         }
 

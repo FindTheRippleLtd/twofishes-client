@@ -1,5 +1,6 @@
 package it.cybion.geocoder;
 
+import it.cybion.geocoder.exceptions.GeocoderException;
 import it.cybion.geocoder.requests.GeocodeRequest;
 import it.cybion.geocoder.requests.ResponseIncludes;
 import it.cybion.geocoder.requests.YahooWoeType;
@@ -16,14 +17,14 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.fail;
 
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
 public class GeocoderImplIntegration {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(
-            GeocoderImplIntegration.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeocoderImplIntegration.class);
 
     private GeocoderImpl geocoderImpl;
 
@@ -123,9 +124,28 @@ public class GeocoderImplIntegration {
         final Feature chicago = response.getInterpretations().get(0).getFeature();
 
         assertEquals(chicago.getName(), "Kings County");
-        assertEquals(chicago.getGeometry().getCenter(), new GeocodePoint(40.63439D,
-                -73.95027D));
-        assertEquals(response.getInterpretations().get(0).getParents().get(0).getName(), "New York");
+        assertEquals(chicago.getGeometry().getCenter(), new GeocodePoint(40.63439D, -73.95027D));
+        assertEquals(response.getInterpretations().get(0).getParents().get(0).getName(),
+                "New York");
+
+    }
+
+    @Test
+    public void givenWhenQueryStartsWithHttpShouldThrowException() throws Exception {
+
+        final GeocodeRequest locationRequest = new GeocodeRequest.GeocodeRequestBuilder().query(
+                "http")
+                .addWoeHint(YahooWoeType.ADMIN2)
+                .addResponseInclude(ResponseIncludes.PARENTS)
+                .build();
+
+        try {
+            final GeocodeResponse response = this.geocoderImpl.geocode(locationRequest);
+            fail();
+        } catch (GeocoderException e) {
+            assertNotNull(e);
+            LOGGER.info(e.getMessage());
+        }
 
     }
 }
