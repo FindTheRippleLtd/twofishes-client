@@ -43,7 +43,7 @@ Dependencies include:
 
 * host and http port of the running instance of twofishes server
 * a jackson object mapper with a module that takes care of deserializing twofishes' server responses
-* a ```org.apache.http.impl.clientCloseableHttpClient``` http client, 
+* a ```org.apache.http.impl.client.CloseableHttpClient``` http client, 
 used to do http GET requests to the server
 
 When something goes wrong at any point, unchecked exceptions are thrown. 
