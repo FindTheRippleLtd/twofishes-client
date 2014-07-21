@@ -47,6 +47,6 @@ against more recent versions of the server.
 
 #### Future improvements
 * consider GeocodeRequest.bounds for query - https://github.com/Cybion-Italy/twofishes-client/issues/2
-* make the APIs asynchronous
+* add implementation of asynchronous APIs
 * support deserialization from json of well known binary data 
 (see all issues at https://github.com/Cybion-Italy/twofishes-client/issues )
