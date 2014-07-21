@@ -6,7 +6,9 @@ A simple http java client for Foursquare's Twofishes geocoder https://github.com
 ### Supported server version
 The current version of the client is developed against the following artifact of the server: 
 
-```server-assembly-0.82.14.jar```
+```
+server-assembly-0.82.14.jar
+```
 
 ### Installation
 Artifacts are not released on public repositories, so you have to build and install it yourself: 
