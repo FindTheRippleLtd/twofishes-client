@@ -31,6 +31,21 @@ interface Geocoder {
 
 And the corresponding http implementation ```GeocoderImpl```. 
 
+To build an instance of GeocoderImpl, see the following snippet: 
+
+```
+Geocoder geocoder = new GeocoderImpl("localhost", 5101,
+                ObjectMapperFactory.INSTANCE.getObjectMapper(), 
+                HttpClients.createDefault());
+```
+
+Dependencies include: 
+
+* host and http port of the running instance of twofishes server
+* a jackson object mapper with a module that takes care of deserializing twofishes' server responses
+* a ```org.apache.http.impl.clientCloseableHttpClient``` http client, 
+used to do http GET requests to the server
+
 When something goes wrong at any point, unchecked exceptions are thrown. 
 
 #### How to run integration tests
