@@ -76,5 +76,6 @@ following instructions at: http://twofishes.net
 * add implementation of asynchronous APIs
 * support deserialization from json of well known binary data 
 (see all issues at https://github.com/Cybion-Italy/twofishes-client/issues )
+* explicitly state license
 
 #### 
