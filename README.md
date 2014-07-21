@@ -10,7 +10,7 @@ server-assembly-0.82.14.jar
 ### Installation
 Artifacts are not released on public repositories, so you have to build and install it yourself: 
 
-* Checkout ```git clone X``` 
+* Checkout ```git clone git@github.com:Cybion-Italy/twofishes-client.git``` 
 * ```mvn clean install```
 * import the dependency in your maven project
 ```
