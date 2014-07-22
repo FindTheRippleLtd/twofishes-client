@@ -55,6 +55,28 @@ already configured with a module that takes care of deserializing twofishes' ser
 * a ```org.apache.http.impl.client.CloseableHttpClient``` http client, 
 used to do http GET requests to the server
 
+As a good practice, you should always use a more detailed configuration of the http client, 
+explicitly specifying timeouts: 
+
+```
+int tenSecondsMsecs = 10000;
+RequestConfig requestConfig = RequestConfig.custom()
+  .setConnectTimeout(tenSecondsMsecs)
+  .setSocketTimeout(tenSecondsMsecs)
+  .build();
+
+PoolingHttpClientConnectionManager connManager =
+  new PoolingHttpClientConnectionManager();
+
+this.httpClient = HttpClients.custom()
+        .setDefaultRequestConfig(requestConfig)
+        .setConnectionManager(connManager)
+        .build();
+
+this.geocoder = new GeocoderImpl("localhost", 5101,
+        ObjectMapperFactory.INSTANCE.getObjectMapper(), httpClient);
+```
+
 When something goes wrong at any point, ```GeocoderException extends RuntimeException```s are thrown. 
 
 #### How to run integration tests

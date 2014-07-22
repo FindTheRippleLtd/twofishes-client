@@ -122,4 +122,27 @@ public class GeocoderImplIntegration extends GeocoderImplProvider {
         }
 
     }
+
+    @Test
+    public void givenRequestNot200WhenDoingLotsOfCallsThenThreadsAreNotBlocked() throws Exception {
+
+        final int amount = 3;
+
+        for (int i = 0; i < amount; i++) {
+            final GeocodeRequest locationRequest = new GeocodeRequest.GeocodeRequestBuilder().query(
+                    "http://stackoverflow.com/questions/21082692/using-java-apache-poolingclientconnectionmanager-leaks-the-memory-how-to-solve-i")
+                    .addWoeHint(YahooWoeType.ADMIN2)
+                    .addResponseInclude(ResponseIncludes.PARENTS)
+                    .build();
+
+            try {
+                final GeocodeResponse response = this.geocoder.geocode(locationRequest);
+                fail();
+            } catch (GeocoderException e) {
+                assertNotNull(e);
+                LOGGER.info(e.getMessage());
+            }
+        }
+
+    }
 }
