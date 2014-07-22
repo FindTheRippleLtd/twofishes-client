@@ -140,10 +140,6 @@ public class GeocoderImpl implements Geocoder {
             String responseAsJson = null;
             final int statusCode = response.getStatusLine().getStatusCode();
 
-            if (statusCode != 200) {
-                throw new GeocoderException("received http status code '" + statusCode + "'");
-            }
-
             try {
                 final HttpEntity entity = response.getEntity();
                 responseAsJson = EntityUtils.toString(entity);
@@ -152,6 +148,10 @@ public class GeocoderImpl implements Geocoder {
                 throw new GeocoderException("failed http entity consume", e);
             } finally {
                 closeQuietly(response);
+            }
+
+            if (statusCode != 200) {
+                throw new GeocoderException("received http status code '" + statusCode + "'");
             }
             //deserialize to json
 

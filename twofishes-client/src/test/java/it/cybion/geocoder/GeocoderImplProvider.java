@@ -1,10 +1,9 @@
 package it.cybion.geocoder;
 
 import it.cybion.geocoder.serialization.ObjectMapperFactory;
-import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
@@ -24,8 +23,14 @@ public abstract class GeocoderImplProvider {
     @BeforeClass
     public void setUpGeocoder() throws Exception {
 
-        final HttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
-        this.httpClient = HttpClients.createMinimal(connManager);
+        final int tenSecondsMsecs = 10000;
+        final RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(tenSecondsMsecs)
+                .setSocketTimeout(tenSecondsMsecs)
+                .build();
+
+        this.httpClient = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
+
         this.geocoder = new GeocoderImpl("localhost", 5101,
                 ObjectMapperFactory.INSTANCE.getObjectMapper(), httpClient);
     }

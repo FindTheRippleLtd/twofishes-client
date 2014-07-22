@@ -6,13 +6,8 @@ import it.cybion.geocoder.requests.ResponseIncludes;
 import it.cybion.geocoder.requests.YahooWoeType;
 import it.cybion.geocoder.responses.Feature;
 import it.cybion.geocoder.responses.GeocodeResponse;
-import it.cybion.geocoder.serialization.ObjectMapperFactory;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -22,40 +17,19 @@ import static org.testng.Assert.fail;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class GeocoderImplIntegration {
+public class GeocoderImplIntegration extends GeocoderImplProvider {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GeocoderImplIntegration.class);
-
-    private GeocoderImpl geocoderImpl;
-
-    private CloseableHttpClient closeable;
-
-    @BeforeMethod
-    public void setUp() throws Exception {
-
-        this.closeable = HttpClients.createDefault();
-        this.geocoderImpl = new GeocoderImpl("localhost", 5101,
-                ObjectMapperFactory.INSTANCE.getObjectMapper(), closeable);
-
-    }
-
-    @AfterMethod
-    public void tearDown() throws Exception {
-
-        this.closeable.close();
-        this.geocoderImpl = null;
-
-    }
 
     @Test
     public void givenDefaultAndEnglishQueriesShouldBeSame() throws Exception {
 
         final GeocodeRequest aRequestDefaultLang = new GeocodeRequest("nyc");
-        final GeocodeResponse nycResponse = this.geocoderImpl.geocode(aRequestDefaultLang);
+        final GeocodeResponse nycResponse = this.geocoder.geocode(aRequestDefaultLang);
         assertNotNull(nycResponse);
 
         final GeocodeRequest aRequestEnglishLang = new GeocodeRequest("nyc", "en");
-        final GeocodeResponse response1 = this.geocoderImpl.geocode(aRequestEnglishLang);
+        final GeocodeResponse response1 = this.geocoder.geocode(aRequestEnglishLang);
         assertNotNull(response1);
         assertEquals(nycResponse, response1);
     }
@@ -66,7 +40,7 @@ public class GeocoderImplIntegration {
         final GeocodeRequest aRequestDefaultLang = new GeocodeRequest.GeocodeRequestBuilder().query(
                 "via trionfale").countryCode("IT").lang("en").build();
 
-        final GeocodeResponse response = this.geocoderImpl.geocode(aRequestDefaultLang);
+        final GeocodeResponse response = this.geocoder.geocode(aRequestDefaultLang);
         assertNotNull(response);
         assertEquals(response.getInterpretations().size(), 0);
 
@@ -79,7 +53,7 @@ public class GeocoderImplIntegration {
                 "Rome, Italy").addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
                 ResponseIncludes.PARENTS).build();
 
-        final GeocodeResponse response = this.geocoderImpl.geocode(locationRequest);
+        final GeocodeResponse response = this.geocoder.geocode(locationRequest);
 
         assertEquals(response.getInterpretations().size(), 2);
         final Feature romeFeature = response.getInterpretations().get(0).getFeature();
@@ -97,7 +71,7 @@ public class GeocoderImplIntegration {
                 "Nettuno").addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
                 ResponseIncludes.PARENTS).build();
 
-        final GeocodeResponse response = this.geocoderImpl.geocode(locationRequest);
+        final GeocodeResponse response = this.geocoder.geocode(locationRequest);
 
         assertEquals(response.getInterpretations().size(), 1);
         final Feature nettunoFeature = response.getInterpretations().get(0).getFeature();
@@ -116,7 +90,7 @@ public class GeocoderImplIntegration {
                 "Chicago/Brooklyn").addWoeHint(YahooWoeType.ADMIN2).addResponseInclude(
                 ResponseIncludes.PARENTS).build();
 
-        final GeocodeResponse response = this.geocoderImpl.geocode(locationRequest);
+        final GeocodeResponse response = this.geocoder.geocode(locationRequest);
 
         LOGGER.info(response + "");
 
@@ -140,7 +114,7 @@ public class GeocoderImplIntegration {
                 .build();
 
         try {
-            final GeocodeResponse response = this.geocoderImpl.geocode(locationRequest);
+            final GeocodeResponse response = this.geocoder.geocode(locationRequest);
             fail();
         } catch (GeocoderException e) {
             assertNotNull(e);
