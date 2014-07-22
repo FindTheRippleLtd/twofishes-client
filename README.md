@@ -93,7 +93,7 @@ following instructions at: http://twofishes.net
 ```mvn clean test -P integration```
 
 #### Future improvements
-* configure project releases to match supported server version
+* describe which server versions are supported from a release
 * consider GeocodeRequest.bounds for query - https://github.com/Cybion-Italy/twofishes-client/issues/2
 * add implementation of asynchronous APIs
 * support deserialization from json of well known binary data 
