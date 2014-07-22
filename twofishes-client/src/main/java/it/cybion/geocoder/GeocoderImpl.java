@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 
 import static it.cybion.geocoder.utils.StringUtils.asCsv;
 
@@ -142,7 +143,7 @@ public class GeocoderImpl implements Geocoder {
 
             try {
                 final HttpEntity entity = response.getEntity();
-                responseAsJson = EntityUtils.toString(entity);
+                responseAsJson = EntityUtils.toString(entity, Charset.forName("UTF-8"));
                 EntityUtils.consume(entity);
             } catch (IOException e) {
                 throw new GeocoderException("failed http entity consume", e);
