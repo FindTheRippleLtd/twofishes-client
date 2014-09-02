@@ -3,17 +3,17 @@ package it.cybion.geocoder.responses;
 /**
  * @author Matteo Moci ( matteo (dot) moci (at) gmail (dot) com )
  */
-public class FeatureIdTemp {
+public class FeatureId {
 
     private String id;
 
     private String source;
 
-    private FeatureIdTemp() {
+    private FeatureId() {
 
     }
 
-    public FeatureIdTemp(String id, String source) {
+    public FeatureId(String id, String source) {
 
         this.id = id;
         this.source = source;
@@ -39,7 +39,7 @@ public class FeatureIdTemp {
             return false;
         }
 
-        FeatureIdTemp featureId1 = (FeatureIdTemp) o;
+        FeatureId featureId1 = (FeatureId) o;
 
         if (id != null ? !id.equals(featureId1.id) : featureId1.id != null) {
             return false;
