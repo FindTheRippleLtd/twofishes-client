@@ -19,7 +19,7 @@ public class Feature {
 
     private YahooWoeType woeType;
 
-    private List<FeatureId> ids;
+    private List<FeatureIdTemp> ids;
 
     private List<FeatureName> names;
 
@@ -42,7 +42,7 @@ public class Feature {
     }
 
     public Feature(String cc, FeatureGeometry geometry, String name, String displayName,
-            YahooWoeType woeType, List<FeatureId> ids, List<FeatureName> names,
+            YahooWoeType woeType, List<FeatureIdTemp> ids, List<FeatureName> names,
             String highlightedName, String matchedName, String id,
             GeocodeFeatureAttributes attributes, Long longId, List<Long> longIds,
             List<Long> parentIds) {
@@ -88,7 +88,7 @@ public class Feature {
         return woeType;
     }
 
-    public List<FeatureId> getIds() {
+    public List<FeatureIdTemp> getIds() {
 
         return ids;
     }

@@ -19,7 +19,7 @@ public class GeocodeFeature {
 
     private YahooWoeType woeType;
 
-    private List<FeatureId> ids;
+    private List<FeatureIdTemp> ids;
 
     private List<FeatureName> names;
 
@@ -51,7 +51,7 @@ public class GeocodeFeature {
     }
 
     public GeocodeFeature(String cc, FeatureGeometry geometry, String name, String displayName,
-            YahooWoeType woeType, List<FeatureId> ids, List<FeatureName> names,
+            YahooWoeType woeType, List<FeatureIdTemp> ids, List<FeatureName> names,
             List<String> attribution, List<String> timezones, String highlightedName,
             String matchedName, String slug, String id, GeocodeFeatureAttributes attributes,
             Long longId, List<Long> longIds, List<Long> parentIds, YahooWoeType role) {
@@ -101,7 +101,7 @@ public class GeocodeFeature {
         return woeType;
     }
 
-    public List<FeatureId> getIds() {
+    public List<FeatureIdTemp> getIds() {
 
         return ids;
     }
