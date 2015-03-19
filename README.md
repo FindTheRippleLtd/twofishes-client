@@ -3,12 +3,19 @@ twofishes-client
 
 A simple http java client for Foursquare's Twofishes geocoder https://github.com/foursquare/twofishes
 
-### Supported server version
+### Versions
 The current version of the client is developed against the following artifact of the server: 
 
 ```
-server-assembly-0.82.14.jar
+server-assembly-0.84.9.jar
 ```
+
+this table sums up the compatibilities:
+
+| Twofishes Server  | Twofishes Client  | Release date          |
+| ----------------- | ----------------- | --------------------- |
+| 0.84.9            | 0.84.9.0          | Mar 19, 2015          |
+| 0.82.14           | 0.82.14.0         | not yet, dev in 2014  |
 
 ### Installation
 Artifacts are not released on public repositories, so you have to build and install it yourself: 
@@ -93,7 +100,6 @@ following instructions at: http://twofishes.net
 ```mvn clean test -P integration```
 
 #### Future improvements
-* describe which server versions are supported from a release
 * consider GeocodeRequest.bounds for query - https://github.com/Cybion-Italy/twofishes-client/issues/2
 * add implementation of asynchronous APIs
 * support deserialization from json of well known binary data 
