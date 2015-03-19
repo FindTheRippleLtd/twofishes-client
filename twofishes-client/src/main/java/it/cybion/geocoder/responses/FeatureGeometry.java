@@ -12,6 +12,8 @@ public class FeatureGeometry {
 
     private GeocodeBoundingBox bounds;
 
+    private String source;
+
     // TODO support "well known binary" in a json field. jackson expects base64 encoding, which is not the case
     // only present if we have a polygon for this feature
     //    3: private byte[] wkbGeometry;
@@ -28,10 +30,11 @@ public class FeatureGeometry {
 
     }
 
-    public FeatureGeometry(GeocodePoint center, GeocodeBoundingBox bounds) {
+    public FeatureGeometry(GeocodePoint center, GeocodeBoundingBox bounds, String source) {
 
         this.center = center;
         this.bounds = bounds;
+        this.source = source;
     }
 
     public GeocodePoint getCenter() {
@@ -42,6 +45,11 @@ public class FeatureGeometry {
     public GeocodeBoundingBox getBounds() {
 
         return bounds;
+    }
+
+    public String getSource() {
+
+        return source;
     }
 
     @Override
@@ -62,6 +70,9 @@ public class FeatureGeometry {
         if (center != null ? !center.equals(that.center) : that.center != null) {
             return false;
         }
+        if (source != null ? !source.equals(that.source) : that.source != null) {
+            return false;
+        }
 
         return true;
     }
@@ -71,6 +82,7 @@ public class FeatureGeometry {
 
         int result = center != null ? center.hashCode() : 0;
         result = 31 * result + (bounds != null ? bounds.hashCode() : 0);
+        result = 31 * result + (source != null ? source.hashCode() : 0);
         return result;
     }
 
@@ -80,6 +92,7 @@ public class FeatureGeometry {
         return "FeatureGeometry{" +
                "center=" + center +
                ", bounds=" + bounds +
+               ", source='" + source + '\'' +
                '}';
     }
 }

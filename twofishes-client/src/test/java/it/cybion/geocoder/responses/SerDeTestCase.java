@@ -102,4 +102,22 @@ public class SerDeTestCase {
 
 
     }
+
+    @Test
+    public void testSourceIsDeserializedIssue6() throws Exception {
+
+        final InputStream geocodeResponseIssue6 = this.getClass().getResourceAsStream(
+                "/response-issue-6.json");
+
+        final GeocodeResponse geocodeResponse = objectMapper.readValue(geocodeResponseIssue6,
+                GeocodeResponse.class);
+        assertNotNull(geocodeResponse);
+        assertNotNull(geocodeResponse.getInterpretations());
+        assertNotNull(geocodeResponse.getInterpretations().get(0));
+        assertNotNull(geocodeResponse.getInterpretations().get(0).getFeature());
+        assertNotNull(geocodeResponse.getInterpretations().get(0).getFeature().getIds());
+
+        assertEquals(geocodeResponse.getInterpretations().get(0).getFeature().getIds().get(0)
+                .getSource(), "geonameid");
+    }
 }

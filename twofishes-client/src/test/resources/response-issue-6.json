@@ -1,0 +1,2602 @@
+{
+  "interpretations": [
+    {
+      "what": "",
+      "where": "london",
+      "feature": {
+        "cc": "GB",
+        "geometry": {
+          "center": {
+            "lat": 51.5,
+            "lng": -0.16667
+          },
+          "bounds": {
+            "ne": {
+              "lat": 51.7202301025,
+              "lng": 0.336111992598
+            },
+            "sw": {
+              "lat": 51.281085968,
+              "lng": -0.519275009632
+            }
+          }
+        },
+        "name": "Greater London",
+        "displayName": "Greater London, United Kingdom",
+        "woeType": 9,
+        "ids": [
+          {
+            "source": "geonameid",
+            "id": "2648110"
+          },
+          {
+            "source": "woeid",
+            "id": "23416974"
+          }
+        ],
+        "names": [
+          {
+            "name": "GLA",
+            "lang": "abbr",
+            "flags": [
+              2
+            ]
+          },
+          {
+            "name": "London",
+            "lang": "en",
+            "flags": [
+              32,
+              16
+            ]
+          },
+          {
+            "name": "Greater London",
+            "lang": "en",
+            "flags": [
+              128,
+              16,
+              1
+            ]
+          }
+        ],
+        "highlightedName": "<b>London</b>, United Kingdom",
+        "matchedName": "London, United Kingdom",
+        "id": "geonameid:2648110",
+        "attributes": {
+          "population": 7504800
+        },
+        "longId": "72057594040576046",
+        "longIds": [
+          "72057594040571679",
+          "72057594040571677",
+          "72057594040571680",
+          "72057594040576045"
+        ],
+        "parentIds": [
+          "72057594040563103",
+          "72057594044197067"
+        ]
+      },
+      "parents": [
+        {
+          "cc": "GB",
+          "geometry": {
+            "center": {
+              "lat": 52.16045,
+              "lng": -0.70312
+            },
+            "bounds": {
+              "ne": {
+                "lat": 57.5939178467,
+                "lng": 4.50988721848
+              },
+              "sw": {
+                "lat": 48.2484550476,
+                "lng": -7.04449987412
+              }
+            }
+          },
+          "name": "England",
+          "displayName": "England, United Kingdom",
+          "woeType": 8,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6269131"
+            },
+            {
+              "source": "woeid",
+              "id": "24554868"
+            }
+          ],
+          "names": [
+            {
+              "name": "ENG",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "England",
+              "lang": "en",
+              "flags": [
+                128,
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:6269131",
+          "attributes": {
+            "population": 50000000
+          },
+          "longId": "72057594044197067",
+          "parentIds": [
+            "72057594040563103"
+          ]
+        },
+        {
+          "cc": "GB",
+          "geometry": {
+            "center": {
+              "lat": 54.75844,
+              "lng": -2.69531
+            },
+            "bounds": {
+              "ne": {
+                "lat": 61.92922,
+                "lng": 4.5
+              },
+              "sw": {
+                "lat": 48.906717,
+                "lng": -18
+              }
+            },
+            "source": "gn-adm0-new3.json"
+          },
+          "name": "United Kingdom",
+          "displayName": "United Kingdom",
+          "woeType": 12,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "2635167"
+            }
+          ],
+          "names": [
+            {
+              "name": "Britain",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "U.K.",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "GB",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "UK",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "United Kingdom of Great Britain and Northern Ireland",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "United Kingdom",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:2635167",
+          "attributes": {
+            "population": 62348447
+          },
+          "longId": "72057594040563103",
+          "parentIds": [
+            "72057594044183084"
+          ]
+        }
+      ]
+    },
+    {
+      "what": "",
+      "where": "london",
+      "feature": {
+        "cc": "CA",
+        "geometry": {
+          "center": {
+            "lat": 42.98339,
+            "lng": -81.23304
+          },
+          "bounds": {
+            "ne": {
+              "lat": 43.0730469,
+              "lng": -81.1070784
+            },
+            "sw": {
+              "lat": 42.8245154,
+              "lng": -81.3906556
+            }
+          },
+          "source": "qs"
+        },
+        "name": "London",
+        "displayName": "London, ON, Canada",
+        "woeType": 7,
+        "ids": [
+          {
+            "source": "geonameid",
+            "id": "6058560"
+          }
+        ],
+        "names": [
+          {
+            "name": "London",
+            "lang": "en",
+            "flags": [
+              16,
+              1
+            ]
+          }
+        ],
+        "highlightedName": "<b>London</b>, ON, Canada",
+        "matchedName": "London, ON, Canada",
+        "id": "geonameid:6058560",
+        "attributes": {
+          "adm0cap": 0,
+          "scalerank": 8,
+          "labelrank": 2,
+          "natscale": 10,
+          "population": 346765
+        },
+        "longId": "72057594043986496",
+        "parentIds": [
+          "72057594044179935",
+          "72057594044021879"
+        ]
+      },
+      "parents": [
+        {
+          "cc": "CA",
+          "geometry": {
+            "center": {
+              "lat": 49.25014,
+              "lng": -84.49983
+            },
+            "bounds": {
+              "ne": {
+                "lat": 56.5526695251,
+                "lng": -72.9893875122
+              },
+              "sw": {
+                "lat": 41.6865653992,
+                "lng": -96.328125
+              }
+            }
+          },
+          "name": "Ontario",
+          "displayName": "Ontario, Canada",
+          "woeType": 8,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6093943"
+            },
+            {
+              "source": "woeid",
+              "id": "2344922"
+            }
+          ],
+          "names": [
+            {
+              "name": "ON",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "Ontario",
+              "lang": "en",
+              "flags": [
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:6093943",
+          "attributes": {
+            "population": 12861940
+          },
+          "longId": "72057594044021879",
+          "parentIds": [
+            "72057594044179935"
+          ]
+        },
+        {
+          "cc": "CA",
+          "geometry": {
+            "center": {
+              "lat": 60.10867,
+              "lng": -113.64258
+            },
+            "bounds": {
+              "ne": {
+                "lat": 83.633392,
+                "lng": -49.5
+              },
+              "sw": {
+                "lat": 41.676558,
+                "lng": -141.001956
+              }
+            },
+            "source": "gn-adm0-new3.json"
+          },
+          "name": "Canada",
+          "displayName": "Canada",
+          "woeType": 12,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6251999"
+            }
+          ],
+          "names": [
+            {
+              "name": "Canada",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "CA",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            }
+          ],
+          "id": "geonameid:6251999",
+          "attributes": {
+            "population": 33679000
+          },
+          "longId": "72057594044179935",
+          "parentIds": [
+            "72057594044183085"
+          ]
+        }
+      ]
+    },
+    {
+      "what": "",
+      "where": "london",
+      "feature": {
+        "cc": "US",
+        "geometry": {
+          "center": {
+            "lat": 37.12898,
+            "lng": -84.08326
+          },
+          "bounds": {
+            "ne": {
+              "lat": 37.151925,
+              "lng": -84.042773
+            },
+            "sw": {
+              "lat": 37.101673,
+              "lng": -84.126274
+            }
+          },
+          "source": "qs"
+        },
+        "name": "London",
+        "displayName": "London, KY, United States",
+        "woeType": 7,
+        "ids": [
+          {
+            "source": "geonameid",
+            "id": "4298960"
+          },
+          {
+            "source": "woeid",
+            "id": "2441293"
+          }
+        ],
+        "names": [
+          {
+            "name": "London",
+            "lang": "en",
+            "flags": [
+              16,
+              1
+            ]
+          }
+        ],
+        "highlightedName": "<b>London</b>, KY, United States",
+        "matchedName": "London, KY, United States",
+        "id": "geonameid:4298960",
+        "attributes": {
+          "adm0cap": 0,
+          "scalerank": 8,
+          "labelrank": 1,
+          "natscale": 10,
+          "population": 7993
+        },
+        "longId": "72057594042226896",
+        "parentIds": [
+          "72057594044179937",
+          "72057594044182861",
+          "72057594042225416"
+        ]
+      },
+      "parents": [
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 37.11067,
+              "lng": -84.1178
+            },
+            "bounds": {
+              "ne": {
+                "lat": 37.335892,
+                "lng": -83.862477
+              },
+              "sw": {
+                "lat": 36.939116,
+                "lng": -84.36888599999999
+              }
+            },
+            "source": "tiger"
+          },
+          "name": "Laurel County",
+          "displayName": "Laurel County, KY, United States",
+          "woeType": 9,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "4297480"
+            },
+            {
+              "source": "woeid",
+              "id": "12588538"
+            }
+          ],
+          "names": [
+            {
+              "name": "Laurel",
+              "lang": "en",
+              "flags": [
+                16,
+                8,
+                1
+              ]
+            },
+            {
+              "name": "Laurel County",
+              "lang": "en",
+              "flags": [
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:4297480",
+          "attributes": {
+            "population": 58849
+          },
+          "longId": "72057594042225416",
+          "parentIds": [
+            "72057594044179937",
+            "72057594044182861"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 38.20042,
+              "lng": -84.87762
+            },
+            "bounds": {
+              "ne": {
+                "lat": 39.147732,
+                "lng": -81.964788
+              },
+              "sw": {
+                "lat": 36.497057999999996,
+                "lng": -89.571203
+              }
+            },
+            "source": "usa_adm1.shp"
+          },
+          "name": "Kentucky",
+          "displayName": "Kentucky, United States",
+          "woeType": 8,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6254925"
+            },
+            {
+              "source": "woeid",
+              "id": "2347576"
+            }
+          ],
+          "names": [
+            {
+              "name": "Kentucky",
+              "lang": "en",
+              "flags": [
+                128,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "KY",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "Blue Grass State",
+              "lang": "en",
+              "flags": [
+                64,
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:6254925",
+          "attributes": {
+            "population": 4206074
+          },
+          "longId": "72057594044182861",
+          "parentIds": [
+            "72057594044179937"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 39.76,
+              "lng": -98.5
+            },
+            "bounds": {
+              "ne": {
+                "lat": 72.781306,
+                "lng": 180
+              },
+              "sw": {
+                "lat": 15.265251,
+                "lng": -180
+              }
+            },
+            "source": "gn-adm0-new3.json"
+          },
+          "name": "United States",
+          "displayName": "United States",
+          "woeType": 12,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6252001"
+            }
+          ],
+          "names": [
+            {
+              "name": "US",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States of America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "USA",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.A.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:6252001",
+          "attributes": {
+            "population": 310232863
+          },
+          "longId": "72057594044179937",
+          "parentIds": [
+            "72057594044183085"
+          ]
+        }
+      ]
+    },
+    {
+      "what": "",
+      "where": "london",
+      "feature": {
+        "cc": "US",
+        "geometry": {
+          "center": {
+            "lat": 39.88645,
+            "lng": -83.44825
+          },
+          "bounds": {
+            "ne": {
+              "lat": 39.918890999999995,
+              "lng": -83.389997
+            },
+            "sw": {
+              "lat": 39.857906,
+              "lng": -83.478884
+            }
+          },
+          "source": "qs"
+        },
+        "name": "London",
+        "displayName": "London, OH, United States",
+        "woeType": 7,
+        "ids": [
+          {
+            "source": "geonameid",
+            "id": "4517009"
+          },
+          {
+            "source": "woeid",
+            "id": "2441292"
+          }
+        ],
+        "names": [
+          {
+            "name": "London",
+            "lang": "en",
+            "flags": [
+              16,
+              1
+            ]
+          }
+        ],
+        "highlightedName": "<b>London</b>, OH, United States",
+        "matchedName": "London, OH, United States",
+        "id": "geonameid:4517009",
+        "attributes": {
+          "population": 9904
+        },
+        "longId": "72057594042444945",
+        "parentIds": [
+          "72057594044179937",
+          "72057594043093354",
+          "72057594042445301"
+        ]
+      },
+      "parents": [
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 39.89403,
+              "lng": -83.4002
+            },
+            "bounds": {
+              "ne": {
+                "lat": 40.111486,
+                "lng": -83.206273
+              },
+              "sw": {
+                "lat": 39.695437999999996,
+                "lng": -83.653386
+              }
+            },
+            "source": "tiger"
+          },
+          "name": "Madison County",
+          "displayName": "Madison County, OH, United States",
+          "woeType": 9,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "4517365"
+            },
+            {
+              "source": "woeid",
+              "id": "12589575"
+            }
+          ],
+          "names": [
+            {
+              "name": "Madison",
+              "lang": "en",
+              "flags": [
+                16,
+                8,
+                1
+              ]
+            },
+            {
+              "name": "Madison County",
+              "lang": "en",
+              "flags": [
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:4517365",
+          "attributes": {
+            "population": 43435
+          },
+          "longId": "72057594042445301",
+          "parentIds": [
+            "72057594044179937",
+            "72057594043093354"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 40.25034,
+              "lng": -83.00018
+            },
+            "bounds": {
+              "ne": {
+                "lat": 42.327132,
+                "lng": -80.518705
+              },
+              "sw": {
+                "lat": 38.403423,
+                "lng": -84.82030499999999
+              }
+            },
+            "source": "usa_adm1.shp"
+          },
+          "name": "Ohio",
+          "displayName": "Ohio, United States",
+          "woeType": 8,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "5165418"
+            },
+            {
+              "source": "woeid",
+              "id": "2347594"
+            }
+          ],
+          "names": [
+            {
+              "name": "Buckeye State",
+              "lang": "en",
+              "flags": [
+                64,
+                16
+              ]
+            },
+            {
+              "name": "State of Ohio",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "OH",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "Ohio",
+              "lang": "en",
+              "flags": [
+                128,
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:5165418",
+          "attributes": {
+            "population": 11467123
+          },
+          "longId": "72057594043093354",
+          "parentIds": [
+            "72057594044179937"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 39.76,
+              "lng": -98.5
+            },
+            "bounds": {
+              "ne": {
+                "lat": 72.781306,
+                "lng": 180
+              },
+              "sw": {
+                "lat": 15.265251,
+                "lng": -180
+              }
+            },
+            "source": "gn-adm0-new3.json"
+          },
+          "name": "United States",
+          "displayName": "United States",
+          "woeType": 12,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6252001"
+            }
+          ],
+          "names": [
+            {
+              "name": "US",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States of America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "USA",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.A.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:6252001",
+          "attributes": {
+            "population": 310232863
+          },
+          "longId": "72057594044179937",
+          "parentIds": [
+            "72057594044183085"
+          ]
+        }
+      ]
+    },
+    {
+      "what": "",
+      "where": "london",
+      "feature": {
+        "cc": "US",
+        "geometry": {
+          "center": {
+            "lat": 35.32897,
+            "lng": -93.25296
+          },
+          "bounds": {
+            "ne": {
+              "lat": 35.338139999999996,
+              "lng": -93.18737499999999
+            },
+            "sw": {
+              "lat": 35.315577,
+              "lng": -93.27292899999999
+            }
+          },
+          "source": "qs"
+        },
+        "name": "London",
+        "displayName": "London, AR, United States",
+        "woeType": 7,
+        "ids": [
+          {
+            "source": "geonameid",
+            "id": "4119617"
+          },
+          {
+            "source": "woeid",
+            "id": "2441278"
+          }
+        ],
+        "names": [
+          {
+            "name": "London",
+            "lang": "en",
+            "flags": [
+              16,
+              1
+            ]
+          }
+        ],
+        "highlightedName": "<b>London</b>, AR, United States",
+        "matchedName": "London, AR, United States",
+        "id": "geonameid:4119617",
+        "attributes": {
+          "population": 1039
+        },
+        "longId": "72057594042047553",
+        "parentIds": [
+          "72057594044179937",
+          "72057594042027689",
+          "72057594042055036"
+        ]
+      },
+      "parents": [
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 35.44763,
+              "lng": -93.03416
+            },
+            "bounds": {
+              "ne": {
+                "lat": 35.728831,
+                "lng": -92.80976299999999
+              },
+              "sw": {
+                "lat": 35.117373,
+                "lng": -93.299014
+              }
+            },
+            "source": "tiger"
+          },
+          "name": "Pope County",
+          "displayName": "Pope County, AR, United States",
+          "woeType": 9,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "4127100"
+            },
+            {
+              "source": "woeid",
+              "id": "12587652"
+            }
+          ],
+          "names": [
+            {
+              "name": "Pope County",
+              "lang": "en",
+              "flags": [
+                16,
+                1
+              ]
+            },
+            {
+              "name": "Pope",
+              "lang": "en",
+              "flags": [
+                16,
+                8,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:4127100",
+          "attributes": {
+            "population": 61754
+          },
+          "longId": "72057594042055036",
+          "parentIds": [
+            "72057594044179937",
+            "72057594042027689"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 34.75037,
+              "lng": -92.50044
+            },
+            "bounds": {
+              "ne": {
+                "lat": 36.499749,
+                "lng": -89.644395
+              },
+              "sw": {
+                "lat": 33.004106,
+                "lng": -94.617919
+              }
+            },
+            "source": "usa_adm1.shp"
+          },
+          "name": "Arkansas",
+          "displayName": "Arkansas, United States",
+          "woeType": 8,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "4099753"
+            },
+            {
+              "source": "woeid",
+              "id": "2347562"
+            }
+          ],
+          "names": [
+            {
+              "name": "Arkansas",
+              "lang": "en",
+              "flags": [
+                128,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "AR",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "State of Arkansas",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "Land of Opportunity",
+              "lang": "en",
+              "flags": [
+                64,
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:4099753",
+          "attributes": {
+            "population": 2757631
+          },
+          "longId": "72057594042027689",
+          "parentIds": [
+            "72057594044179937"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 39.76,
+              "lng": -98.5
+            },
+            "bounds": {
+              "ne": {
+                "lat": 72.781306,
+                "lng": 180
+              },
+              "sw": {
+                "lat": 15.265251,
+                "lng": -180
+              }
+            },
+            "source": "gn-adm0-new3.json"
+          },
+          "name": "United States",
+          "displayName": "United States",
+          "woeType": 12,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6252001"
+            }
+          ],
+          "names": [
+            {
+              "name": "US",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States of America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "USA",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.A.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:6252001",
+          "attributes": {
+            "population": 310232863
+          },
+          "longId": "72057594044179937",
+          "parentIds": [
+            "72057594044183085"
+          ]
+        }
+      ]
+    },
+    {
+      "what": "",
+      "where": "london",
+      "feature": {
+        "cc": "US",
+        "geometry": {
+          "center": {
+            "lat": 36.47606,
+            "lng": -119.44318
+          },
+          "bounds": {
+            "ne": {
+              "lat": 36.488434999999996,
+              "lng": -119.438498
+            },
+            "sw": {
+              "lat": 36.473447,
+              "lng": -119.449781
+            }
+          },
+          "source": "qs_localities.shp"
+        },
+        "name": "London",
+        "displayName": "London, CA, United States",
+        "woeType": 7,
+        "ids": [
+          {
+            "source": "geonameid",
+            "id": "5367815"
+          },
+          {
+            "source": "woeid",
+            "id": "2441279"
+          }
+        ],
+        "names": [
+          {
+            "name": "London",
+            "lang": "en",
+            "flags": [
+              16,
+              1
+            ]
+          }
+        ],
+        "highlightedName": "<b>London</b>, CA, United States",
+        "matchedName": "London, CA, United States",
+        "id": "geonameid:5367815",
+        "attributes": {
+          "population": 1869
+        },
+        "longId": "72057594043295751",
+        "parentIds": [
+          "72057594044179937",
+          "72057594043260857",
+          "72057594043331725"
+        ]
+      },
+      "parents": [
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 36.22016,
+              "lng": -118.80047
+            },
+            "bounds": {
+              "ne": {
+                "lat": 36.744816,
+                "lng": -117.980761
+              },
+              "sw": {
+                "lat": 35.789161,
+                "lng": -119.573194
+              }
+            },
+            "source": "tiger"
+          },
+          "name": "Tulare County",
+          "displayName": "Tulare County, CA, United States",
+          "woeType": 9,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "5403789"
+            },
+            {
+              "source": "woeid",
+              "id": "12587723"
+            }
+          ],
+          "names": [
+            {
+              "name": "Tulare County",
+              "lang": "en",
+              "flags": [
+                16,
+                1
+              ]
+            },
+            {
+              "name": "Tulare",
+              "lang": "en",
+              "flags": [
+                16,
+                8,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:5403789",
+          "attributes": {
+            "population": 442179
+          },
+          "longId": "72057594043331725",
+          "parentIds": [
+            "72057594044179937",
+            "72057594043260857"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 37.25022,
+              "lng": -119.75126
+            },
+            "bounds": {
+              "ne": {
+                "lat": 42.009516999999995,
+                "lng": -114.131211
+              },
+              "sw": {
+                "lat": 32.528832,
+                "lng": -124.48200299999999
+              }
+            },
+            "source": "usa_adm1.shp"
+          },
+          "name": "California",
+          "displayName": "California, United States",
+          "woeType": 8,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "5332921"
+            },
+            {
+              "source": "woeid",
+              "id": "2347563"
+            }
+          ],
+          "names": [
+            {
+              "name": "State of California",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "Calif",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "California",
+              "lang": "en",
+              "flags": [
+                128,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "California Republic",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "Golden State",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "CA",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            }
+          ],
+          "id": "geonameid:5332921",
+          "attributes": {
+            "population": 37691912
+          },
+          "longId": "72057594043260857",
+          "parentIds": [
+            "72057594044179937"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 39.76,
+              "lng": -98.5
+            },
+            "bounds": {
+              "ne": {
+                "lat": 72.781306,
+                "lng": 180
+              },
+              "sw": {
+                "lat": 15.265251,
+                "lng": -180
+              }
+            },
+            "source": "gn-adm0-new3.json"
+          },
+          "name": "United States",
+          "displayName": "United States",
+          "woeType": 12,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6252001"
+            }
+          ],
+          "names": [
+            {
+              "name": "US",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States of America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "USA",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.A.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:6252001",
+          "attributes": {
+            "population": 310232863
+          },
+          "longId": "72057594044179937",
+          "parentIds": [
+            "72057594044183085"
+          ]
+        }
+      ]
+    },
+    {
+      "what": "",
+      "where": "london",
+      "feature": {
+        "cc": "KI",
+        "geometry": {
+          "center": {
+            "lat": 1.98487,
+            "lng": -157.47502
+          }
+        },
+        "name": "London Village",
+        "displayName": "London Village, Line Islands, Kiribati",
+        "woeType": 7,
+        "ids": [
+          {
+            "source": "geonameid",
+            "id": "4030939"
+          },
+          {
+            "source": "woeid",
+            "id": "56043700"
+          }
+        ],
+        "names": [
+          {
+            "name": "London Village",
+            "lang": "en",
+            "flags": [
+              16,
+              1
+            ]
+          }
+        ],
+        "highlightedName": "<b>London</b>, Line Islands, Kiribati",
+        "matchedName": "London, Line Islands, Kiribati",
+        "id": "geonameid:4030939",
+        "attributes": {
+          "population": 1829
+        },
+        "longId": "72057594041958875",
+        "parentIds": [
+          "72057594041958881",
+          "72057594041958876",
+          "72057594045449529"
+        ]
+      },
+      "parents": [
+        {
+          "cc": "KI",
+          "geometry": {
+            "center": {
+              "lat": 1.94,
+              "lng": -157.475
+            }
+          },
+          "name": "Kiritimati",
+          "displayName": "Kiritimati, Line Islands, Kiribati",
+          "woeType": 9,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "7521593"
+            }
+          ],
+          "names": [
+            {
+              "name": "KT",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "Kiritimati",
+              "lang": "en",
+              "flags": [
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:7521593",
+          "attributes": {
+            "population": 5115
+          },
+          "longId": "72057594045449529",
+          "parentIds": [
+            "72057594041958881",
+            "72057594041958876"
+          ]
+        },
+        {
+          "cc": "KI",
+          "geometry": {
+            "center": {
+              "lat": 1.942,
+              "lng": -157.475
+            }
+          },
+          "name": "Line Islands",
+          "displayName": "Line Islands, Kiribati",
+          "woeType": 8,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "4030940"
+            }
+          ],
+          "names": [
+            {
+              "name": "Line Islands",
+              "lang": "en",
+              "flags": [
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:4030940",
+          "attributes": {
+            "population": 8809
+          },
+          "longId": "72057594041958876",
+          "parentIds": [
+            "72057594041958881"
+          ]
+        },
+        {
+          "cc": "KI",
+          "geometry": {
+            "center": {
+              "lat": 1.421,
+              "lng": 172.984
+            },
+            "bounds": {
+              "ne": {
+                "lat": 5.498373,
+                "lng": 180
+              },
+              "sw": {
+                "lat": -11.864964,
+                "lng": -175.5
+              }
+            },
+            "source": "gn-adm0-new3.json"
+          },
+          "name": "Kiribati",
+          "displayName": "Kiribati",
+          "woeType": 12,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "4030945"
+            }
+          ],
+          "names": [
+            {
+              "name": "KI",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "Republic of Kiribati",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "Kiribati",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:4030945",
+          "attributes": {
+            "population": 92533
+          },
+          "longId": "72057594041958881",
+          "parentIds": [
+            "72057594044183087"
+          ]
+        }
+      ]
+    },
+    {
+      "what": "",
+      "where": "london",
+      "feature": {
+        "cc": "US",
+        "geometry": {
+          "center": {
+            "lat": 30.67685,
+            "lng": -99.57645
+          },
+          "bounds": {
+            "ne": {
+              "lat": 30.6802787781,
+              "lng": -99.5754852295
+            },
+            "sw": {
+              "lat": 30.6727256775,
+              "lng": -99.5779724121
+            }
+          }
+        },
+        "name": "London",
+        "displayName": "London, TX, United States",
+        "woeType": 7,
+        "ids": [
+          {
+            "source": "geonameid",
+            "id": "4707414"
+          },
+          {
+            "source": "woeid",
+            "id": "2441291"
+          }
+        ],
+        "names": [
+          {
+            "name": "London",
+            "lang": "en",
+            "flags": [
+              16,
+              1
+            ]
+          }
+        ],
+        "highlightedName": "<b>London</b>, TX, United States",
+        "matchedName": "London, TX, United States",
+        "id": "geonameid:4707414",
+        "attributes": {
+          "population": 0
+        },
+        "longId": "72057594042635350",
+        "parentIds": [
+          "72057594044179937",
+          "72057594042664222",
+          "72057594042631192"
+        ]
+      },
+      "parents": [
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 30.48678,
+              "lng": -99.7487
+            },
+            "bounds": {
+              "ne": {
+                "lat": 30.711019,
+                "lng": -99.301718
+              },
+              "sw": {
+                "lat": 30.286652999999998,
+                "lng": -100.116873
+              }
+            },
+            "source": "tiger"
+          },
+          "name": "Kimble County",
+          "displayName": "Kimble County, TX, United States",
+          "woeType": 9,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "4703256"
+            },
+            {
+              "source": "woeid",
+              "id": "12590140"
+            }
+          ],
+          "names": [
+            {
+              "name": "Kimble County",
+              "lang": "en",
+              "flags": [
+                16,
+                1
+              ]
+            },
+            {
+              "name": "Kimble",
+              "lang": "en",
+              "flags": [
+                16,
+                8,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:4703256",
+          "attributes": {
+            "population": 4607
+          },
+          "longId": "72057594042631192",
+          "parentIds": [
+            "72057594044179937",
+            "72057594042664222"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 31.25044,
+              "lng": -99.25061
+            },
+            "bounds": {
+              "ne": {
+                "lat": 36.500704,
+                "lng": -93.508039
+              },
+              "sw": {
+                "lat": 25.837163999999998,
+                "lng": -106.645646
+              }
+            },
+            "source": "usa_adm1.shp"
+          },
+          "name": "Texas",
+          "displayName": "Texas, United States",
+          "woeType": 8,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "4736286"
+            },
+            {
+              "source": "woeid",
+              "id": "2347602"
+            }
+          ],
+          "names": [
+            {
+              "name": "Texas",
+              "lang": "en",
+              "flags": [
+                128,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "TX",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "Lone Star State",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:4736286",
+          "attributes": {
+            "population": 22875689
+          },
+          "longId": "72057594042664222",
+          "parentIds": [
+            "72057594044179937"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 39.76,
+              "lng": -98.5
+            },
+            "bounds": {
+              "ne": {
+                "lat": 72.781306,
+                "lng": 180
+              },
+              "sw": {
+                "lat": 15.265251,
+                "lng": -180
+              }
+            },
+            "source": "gn-adm0-new3.json"
+          },
+          "name": "United States",
+          "displayName": "United States",
+          "woeType": 12,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6252001"
+            }
+          ],
+          "names": [
+            {
+              "name": "US",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States of America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "USA",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.A.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:6252001",
+          "attributes": {
+            "population": 310232863
+          },
+          "longId": "72057594044179937",
+          "parentIds": [
+            "72057594044183085"
+          ]
+        }
+      ]
+    },
+    {
+      "what": "",
+      "where": "london",
+      "feature": {
+        "cc": "US",
+        "geometry": {
+          "center": {
+            "lat": 42.02004,
+            "lng": -83.61327
+          },
+          "bounds": {
+            "ne": {
+              "lat": 42.085598,
+              "lng": -83.536902
+            },
+            "sw": {
+              "lat": 41.997341,
+              "lng": -83.656621
+            }
+          },
+          "source": "tiger"
+        },
+        "name": "London",
+        "displayName": "London, MI, United States",
+        "woeType": 7,
+        "ids": [
+          {
+            "source": "geonameid",
+            "id": "4999913"
+          },
+          {
+            "source": "woeid",
+            "id": "2441281"
+          }
+        ],
+        "names": [
+          {
+            "name": "London",
+            "lang": "en",
+            "flags": [
+              16,
+              1
+            ]
+          }
+        ],
+        "highlightedName": "<b>London</b>, MI, United States",
+        "matchedName": "London, MI, United States",
+        "id": "geonameid:4999913",
+        "attributes": {
+          "population": 0
+        },
+        "longId": "72057594042927849",
+        "longIds": [
+          "72057594042927852"
+        ],
+        "parentIds": [
+          "72057594044179937",
+          "72057594042929772",
+          "72057594042930284"
+        ]
+      },
+      "parents": [
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 41.9214,
+              "lng": -83.49426
+            },
+            "bounds": {
+              "ne": {
+                "lat": 42.09438,
+                "lng": -83.11246
+              },
+              "sw": {
+                "lat": 41.723546,
+                "lng": -83.773922
+              }
+            },
+            "source": "tiger"
+          },
+          "name": "Monroe County",
+          "displayName": "Monroe County, MI, United States",
+          "woeType": 9,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "5002348"
+            },
+            {
+              "source": "woeid",
+              "id": "12588771"
+            }
+          ],
+          "names": [
+            {
+              "name": "Monroe",
+              "lang": "en",
+              "flags": [
+                16,
+                8,
+                1
+              ]
+            },
+            {
+              "name": "Monroe County",
+              "lang": "en",
+              "flags": [
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:5002348",
+          "attributes": {
+            "population": 152021
+          },
+          "longId": "72057594042930284",
+          "parentIds": [
+            "72057594044179937",
+            "72057594042929772"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 44.25029,
+              "lng": -85.50033
+            },
+            "bounds": {
+              "ne": {
+                "lat": 48.306062999999995,
+                "lng": -82.12297099999999
+              },
+              "sw": {
+                "lat": 41.696118,
+                "lng": -90.418392
+              }
+            },
+            "source": "usa_adm1.shp"
+          },
+          "name": "Michigan",
+          "displayName": "Michigan, United States",
+          "woeType": 8,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "5001836"
+            },
+            {
+              "source": "woeid",
+              "id": "2347581"
+            }
+          ],
+          "names": [
+            {
+              "name": "Michigan",
+              "lang": "en",
+              "flags": [
+                128,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "MI",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "Wolverine State",
+              "lang": "en",
+              "flags": [
+                64,
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:5001836",
+          "attributes": {
+            "population": 9883360
+          },
+          "longId": "72057594042929772",
+          "parentIds": [
+            "72057594044179937"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 39.76,
+              "lng": -98.5
+            },
+            "bounds": {
+              "ne": {
+                "lat": 72.781306,
+                "lng": 180
+              },
+              "sw": {
+                "lat": 15.265251,
+                "lng": -180
+              }
+            },
+            "source": "gn-adm0-new3.json"
+          },
+          "name": "United States",
+          "displayName": "United States",
+          "woeType": 12,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6252001"
+            }
+          ],
+          "names": [
+            {
+              "name": "US",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States of America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "USA",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.A.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:6252001",
+          "attributes": {
+            "population": 310232863
+          },
+          "longId": "72057594044179937",
+          "parentIds": [
+            "72057594044183085"
+          ]
+        }
+      ]
+    },
+    {
+      "what": "",
+      "where": "london",
+      "feature": {
+        "cc": "US",
+        "geometry": {
+          "center": {
+            "lat": 43.52607,
+            "lng": -93.0627
+          },
+          "bounds": {
+            "ne": {
+              "lat": 43.586858,
+              "lng": -93.04909099999999
+            },
+            "sw": {
+              "lat": 43.499570999999996,
+              "lng": -93.169203
+            }
+          },
+          "source": "tiger"
+        },
+        "name": "London",
+        "displayName": "London, MN, United States",
+        "woeType": 7,
+        "ids": [
+          {
+            "source": "geonameid",
+            "id": "5035439"
+          },
+          {
+            "source": "woeid",
+            "id": "2441282"
+          }
+        ],
+        "names": [
+          {
+            "name": "London",
+            "lang": "en",
+            "flags": [
+              16,
+              1
+            ]
+          }
+        ],
+        "highlightedName": "<b>London</b>, MN, United States",
+        "matchedName": "London, MN, United States",
+        "id": "geonameid:5035439",
+        "attributes": {
+          "population": 0
+        },
+        "longId": "72057594042963375",
+        "longIds": [
+          "72057594042963380"
+        ],
+        "parentIds": [
+          "72057594044179937",
+          "72057594042965715",
+          "72057594042955335"
+        ]
+      },
+      "parents": [
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 43.67384,
+              "lng": -93.34882
+            },
+            "bounds": {
+              "ne": {
+                "lat": 43.848462999999995,
+                "lng": -93.04909099999999
+              },
+              "sw": {
+                "lat": 43.499361,
+                "lng": -93.648563
+              }
+            },
+            "source": "tiger"
+          },
+          "name": "Freeborn County",
+          "displayName": "Freeborn County, MN, United States",
+          "woeType": 9,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "5027399"
+            },
+            {
+              "source": "woeid",
+              "id": "12588820"
+            }
+          ],
+          "names": [
+            {
+              "name": "Freeborn",
+              "lang": "en",
+              "flags": [
+                16,
+                8,
+                1
+              ]
+            },
+            {
+              "name": "Freeborn County",
+              "lang": "en",
+              "flags": [
+                16,
+                1
+              ]
+            }
+          ],
+          "id": "geonameid:5027399",
+          "attributes": {
+            "population": 31255
+          },
+          "longId": "72057594042955335",
+          "parentIds": [
+            "72057594044179937",
+            "72057594042965715"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 46.25024,
+              "lng": -94.25055
+            },
+            "bounds": {
+              "ne": {
+                "lat": 49.384358,
+                "lng": -89.483385
+              },
+              "sw": {
+                "lat": 43.499361,
+                "lng": -97.23919599999999
+              }
+            },
+            "source": "usa_adm1.shp"
+          },
+          "name": "Minnesota",
+          "displayName": "Minnesota, United States",
+          "woeType": 8,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "5037779"
+            },
+            {
+              "source": "woeid",
+              "id": "2347582"
+            }
+          ],
+          "names": [
+            {
+              "name": "Minnesota",
+              "lang": "en",
+              "flags": [
+                128,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "State of Minnesota",
+              "lang": "en",
+              "flags": [
+                128,
+                16
+              ]
+            },
+            {
+              "name": "MN",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "N Star State",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                8
+              ]
+            },
+            {
+              "name": "North Star State",
+              "lang": "en",
+              "flags": [
+                64,
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:5037779",
+          "attributes": {
+            "population": 5141953
+          },
+          "longId": "72057594042965715",
+          "parentIds": [
+            "72057594044179937"
+          ]
+        },
+        {
+          "cc": "US",
+          "geometry": {
+            "center": {
+              "lat": 39.76,
+              "lng": -98.5
+            },
+            "bounds": {
+              "ne": {
+                "lat": 72.781306,
+                "lng": 180
+              },
+              "sw": {
+                "lat": 15.265251,
+                "lng": -180
+              }
+            },
+            "source": "gn-adm0-new3.json"
+          },
+          "name": "United States",
+          "displayName": "United States",
+          "woeType": 12,
+          "ids": [
+            {
+              "source": "geonameid",
+              "id": "6252001"
+            }
+          ],
+          "names": [
+            {
+              "name": "US",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States of America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            },
+            {
+              "name": "USA",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "U.S.A.",
+              "lang": "abbr",
+              "flags": [
+                2
+              ]
+            },
+            {
+              "name": "United States",
+              "lang": "en",
+              "flags": [
+                64,
+                16,
+                1
+              ]
+            },
+            {
+              "name": "America",
+              "lang": "en",
+              "flags": [
+                16
+              ]
+            }
+          ],
+          "id": "geonameid:6252001",
+          "attributes": {
+            "population": 310232863
+          },
+          "longId": "72057594044179937",
+          "parentIds": [
+            "72057594044183085"
+          ]
+        }
+      ]
+    }
+  ]
+}
